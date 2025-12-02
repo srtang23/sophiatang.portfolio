@@ -1,0 +1,72 @@
+{
+  "rewrites": [
+    {
+      "source": "/about",
+      "destination": "/about.html"
+    },
+    {
+      "source": "/work/sprout",
+      "destination": "/sprout.html"
+    },
+    {
+      "source": "/work/spring",
+      "destination": "/spring.html"
+    },
+    {
+      "source": "/work/turtlup",
+      "destination": "/turtlup.html"
+    },
+    {
+      "source": "/work/hcde351",
+      "destination": "/hcde351.html"
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/about.html",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/sprout.html",
+      "destination": "/work/sprout",
+      "permanent": true
+    },
+    {
+      "source": "/spring.html",
+      "destination": "/work/spring",
+      "permanent": true
+    },
+    {
+      "source": "/turtlup.html",
+      "destination": "/work/turtlup",
+      "permanent": true
+    },
+    {
+      "source": "/hcde351.html",
+      "destination": "/work/hcde351",
+      "permanent": true
+    },
+    {
+      "source": "/sprout",
+      "destination": "/work/sprout",
+      "permanent": true
+    },
+    {
+      "source": "/spring",
+      "destination": "/work/spring",
+      "permanent": true
+    },
+    {
+      "source": "/turtlup",
+      "destination": "/work/turtlup",
+      "permanent": true
+    },
+    {
+      "source": "/hcde351",
+      "destination": "/work/hcde351",
+      "permanent": true
+    }
+  ]
+}
+

@@ -1,0 +1,25 @@
+# Enable URL rewriting
+RewriteEngine On
+
+# Redirect .html extensions to clean URLs (301 permanent redirect)
+RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
+RewriteRule ^ /%1? [NC,L,R=301]
+
+# Redirect old project URLs to /work/ structure
+RewriteCond %{THE_REQUEST} ^(GET|HEAD)\s/(sprout|spring|turtlup|hcde351)(\.html)?\s [NC]
+RewriteRule ^ /work/%2? [NC,L,R=301]
+
+# Rewrite /work/project-name to project-name.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^work/(sprout|spring|turtlup|hcde351)/?$ $1.html [L]
+
+# Rewrite clean URLs to .html files internally (for non-work pages like /about)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
+# Handle root/index page
+RewriteRule ^$ index.html [L]
+

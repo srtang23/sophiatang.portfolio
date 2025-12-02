@@ -18,11 +18,11 @@
                     <div class="nav-wrapper">
                         <div class="nav-content">
                             <div class="logo-wrapper">
-                                <a href="index.html" class="nav-link">Sophia Tang</a>
+                                <a href="/" class="nav-link">Sophia Tang</a>
                             </div>
                             <div class="nav-links">
-                                <a href="index.html#work" class="nav-link">Work</a>
-                                <a href="about.html" class="nav-link">About</a>
+                                <a href="/#work" class="nav-link">Work</a>
+                                <a href="/about" class="nav-link">About</a>
                                 <a href="#" class="nav-link external-link">Resume</a>
                             </div>
                         </div>
@@ -83,7 +83,7 @@
                     <div class="project-details project-gap">
                         <div class="project-text">
                             <h2>RESEARCH</h2>
-                            <div class="subsection">
+                            <div class="subsection-content">
                                 <h3>Competitive Analysis</h3>
                                 <p>Analyzed three Seattle-area festivals to identify key success factors and opportunities:</p>
                                 <div class="competitive-analysis-section">
@@ -110,7 +110,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="subsection">
+                            <div class="subsection-content">
                                 <h3>User Personas</h3>
                                 <p>Created personas to understand the diverse attendee types and their unique needs.</p>
                                 <div class="persona-cards">
@@ -143,119 +143,122 @@
                         </div>
                     </div>
 
-                    <div class="project-details project-gap">
-                        <div class="project-text">
-                            <h2>VISUAL LANGUAGE</h2>
-                            <div class="subsection">
-                                <div class="visual-language-grid">
-                                    <!-- Left Column: Moodboard -->
-                                    <div class="moodboard-section">
-                                        <h3>Moodboard</h3>
-                                        <img src="img/spring/mood_board.png" alt="Spring Mood Board" class="mood-board-img">
-                                    </div>
-
-                                <!-- Right Column: Style Guide -->
-                                <div class="style-guide-section">
-                                    <h3>Colors & Typography</h3>
-                                    <div class="style-guide-layout">
-                                            <!-- Vertical Color Strip -->
-                                            <div class="color-strip">
-                                                <div class="color-block" style="background-color: #E45969;"></div>
-                                                <div class="color-block" style="background-color: #D5D860;"></div>
-                                                <div class="color-block" style="background-color: #F0B99C;"></div>
-                                                <div class="color-block" style="background-color: #1D5C07;"></div>
-                                                <div class="color-block" style="background-color: #ADB700;"></div>
-                                                <div class="color-block" style="background-color: #FFF0D8;"></div>
-                                                <div class="color-block" style="background-color: #F2D4C3;"></div>
-                                                <div class="color-block" style="background-color: #45281D;"></div>
-                                                <div class="color-block" style="background-color: #F59779;"></div>
-                                            </div>
-
-                                            <!-- Details Column -->
-                                            <div class="style-details-column">
-                                                <!-- Contrast Blocks -->
-                                                <div class="contrast-stack">
-                                                    <div class="contrast-box" style="background-color: #1D5C07; color: #FFF;">
-                                                        <span class="contrast-value">Contrast Ratio 7.23 : 1</span>
-                                                    </div>
-                                                    <div class="contrast-box" style="background-color: #D5D860; color: #45281D;">
-                                                        <span class="contrast-value">Contrast Ratio 8.77 : 1</span>
-                                                    </div>
-                                                </div>
-
-                                                <!-- Typography -->
-                                                <div class="typography-stack">
-                                                    <div class="type-group">
-                                                        <h4>Wordmark Font</h4>
-                                                        <img src="img/spring/font_wordmark.png" alt="Henny Penny Wordmark Font" class="typography-img">
-                                                    </div>
-
-                                                    <div class="type-group">
-                                                        <h4>Font Pairings</h4>
-                                                        <img src="img/spring/font_pairings.png" alt="Herculanum and Judson Font Pairings" class="typography-img">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                     <div class="subsection">
-                        <h3>UI Style Tiles</h3>
-                        <div class="visual-language-grid ui-tiles-ratio">
-                            <div class="ui-tiles-section">
-                                <div class="ui-tiles-group">
-                                    <div class="ui-tiles-subgroup">
-                                        <h4>Logomark</h4>
-                                        <img src="img/spring/logomark.png" alt="Spring Logomark" class="logomark-img">
-                                        <!-- <img src="img/spring/logomark.png" alt="Spring Logomark" class="icons-img"> -->
-                                    </div>
-
-                                    <div class="ui-tiles-subgroup">
-                                        <h4>Button State</h4>
-                                        <p> Try interacting with the buttons to see the states!</p>
-                                        <div class="ui-tiles-display">
-                                            <div class="button-state-row">
-                                                <button class="spring-btn primary-btn">Primary Button</button>
-                                            </div>
-
-                                            <div class="button-state-row" style="margin-top: 16px;">
-                                                <button class="spring-btn secondary-btn">Secondary Button</button>
+                            <h2>VISUAL LANGUAGE</h2>
+                            <!-- <div class="visual-language-card"> Removed outer wrapper -->
+                                <div class="subsection-content">
+                                    <div class="visual-language-grid">
+                                        <!-- Left Column: Moodboard -->
+                                        <div class="moodboard-section">
+                                            <h3>Moodboard</h3>
+                                            <div class="spring-kit-card">
+                                                <img src="img/spring/mood_board.png" alt="Spring Mood Board" class="mood-board-img">
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <div class="ui-tiles-subgroup">
-                                        <h4>Input State</h4>
-                                        <p> Try inputing text with or without an @ symbol!</p>
-                                        <!-- Single Interactive Input -->
-                                        <div class="ui-tiles-display">
-                                            <div class="input-wrapper">
-                                                <input type="text" class="spring-input" placeholder="Email Address">
+                                        <!-- Right Column: Style Guide -->
+                                        <div class="style-guide-section">
+                                            <h3>Colors & Typography</h3>
+                                            <div class="spring-kit-card">
+                                                <div class="style-guide-layout" style="width: 100%;">
+                                                    <!-- Vertical Color Strip -->
+                                                    <div class="color-strip">
+                                                        <div class="color-block" style="background-color: #E45969;"></div>
+                                                        <div class="color-block" style="background-color: #D5D860;"></div>
+                                                        <div class="color-block" style="background-color: #F0B99C;"></div>
+                                                        <div class="color-block" style="background-color: #1D5C07;"></div>
+                                                        <div class="color-block" style="background-color: #ADB700;"></div>
+                                                        <div class="color-block" style="background-color: #FFF0D8;"></div>
+                                                        <div class="color-block" style="background-color: #F2D4C3;"></div>
+                                                        <div class="color-block" style="background-color: #45281D;"></div>
+                                                        <div class="color-block" style="background-color: #F59779;"></div>
+                                                    </div>
+
+                                                    <!-- Details Column -->
+                                                    <div class="style-details-column">
+                                                        <!-- Contrast Blocks -->
+                                                        <div class="contrast-stack">
+                                                            <div class="contrast-box" style="background-color: #1D5C07; color: #FFF;">
+                                                                <span class="contrast-value">Contrast Ratio 7.23 : 1</span>
+                                                            </div>
+                                                            <div class="contrast-box" style="background-color: #D5D860; color: #45281D;">
+                                                                <span class="contrast-value">Contrast Ratio 8.77 : 1</span>
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- Typography -->
+                                                        <div class="typography-stack">
+                                                            <div class="type-group">
+                                                                <h4>Wordmark Font</h4>
+                                                                <img src="img/spring/font_wordmark.svg" alt="Henny Penny Wordmark Font" class="typography-img">
+                                                            </div>
+
+                                                            <div class="type-group">
+                                                                <h4>Font Pairings</h4>
+                                                                <img src="img/spring/font_pairings.svg" alt="Herculanum and Judson Font Pairings" class="typography-img">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                                <div class="subsection-content">
+                                    <div class="visual-language-grid ui-tiles-ratio">
+                                        <div class="ui-tiles-section">
+                                            <div class="ui-tiles-group">
+                                                <h3>Button & Input States</h3>
+                                                <div class="spring-kit-card" style="flex-direction: column; align-items: flex-start; gap: 20px;">
+                                                    <div class="ui-tiles-subgroup" style="width: 100%;">
+                                                        <p> Try interacting with the buttons to see the states!</p>
+                                                        <div class="ui-tiles-display">
+                                                            <div class="button-state-row">
+                                                                <button class="spring-btn primary-btn">Primary Button</button>
+                                                            </div>
 
-                            <div class="style-guide-section">
-                                <div class="ui-tiles-group">
-                                    <div class="ui-tiles-subgroup">
-                                        <h4 style="margin-top: 0;">Icons</h4>
-                                        <img src="img/spring/icons.png" alt="Spring App Icons" class="icons-img">
+                                                            <div class="button-state-row" style="margin-top: 16px;">
+                                                                <button class="spring-btn secondary-btn">Secondary Button</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="ui-tiles-subgroup" style="width: 100%;">
+                                                        <p> Try inputing text with or without an @ symbol!</p>
+                                                        <!-- Single Interactive Input -->
+                                                        <div class="ui-tiles-display">
+                                                            <div class="input-wrapper">
+                                                                <input type="text" class="spring-input" placeholder="Email Address">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="style-guide-section">
+                                            <div class="ui-tiles-group">
+                                                <div class="ui-tiles-subgroup">
+                                                    <h3 style="margin-top: 0;">Assets</h3>
+                                                    <div class="spring-kit-card" style="flex-direction: column; align-items: flex-start; gap: 16px;">
+                                                        <h4 style="margin: 0;">Icons</h4>
+                                                        <img src="img/spring/icons.svg" alt="Spring Icons" class="assets-img">
+                                                        <h4 style="margin: 0;">Logomark</h4>
+                                                        <img src="img/spring/logomark.svg" alt="Spring Logomark" class="assets-img">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                            <!-- </div> -->
                     </div>
-                        </div>
                     </div>
 
                     <div class="project-details project-gap">
                         <div class="project-text">
                             <h2>EVENT ARTIFACTS</h2>
-                            <div class="subsection">
+                            <div class="subsection-content">
                                 <p>Promotional items designed to build excitement and awareness for the festival, including digital flyers, social media graphics, and physical posters.</p>
 
                                 <!-- Slideshow Container -->
@@ -319,8 +322,11 @@
 
                     <div class="project-details project-gap">
                         <div class="project-text">
-                            <h2>APP WIREFRAMES</h2>
-                            <div class="subsection">
+                            <h2>DESIGN</h2>
+                            <h3>User Flow</h3>
+                            <img src="img/spring/user_flow.svg" alt="Spring User Flow" class="assets-img" style="max-width: 80%; margin: 0 auto;">
+                            <h3>App Wireframes</h3>
+                            <div class="subsection-content">
                                 <p>Mid-fidelity wireframes showcasing the core user flows and interactions for the festival ticket purchasing app.</p>
                                 <div class="wireframes-slider">
                                     <img src="img/spring/wireframe_1.png" alt="Spring Wireframe 1">
@@ -337,12 +343,12 @@
 
                     <div class="project-details project-gap">
                         <div class="project-text">
-                            <h2>PROTOTYPE</h2>
-                            <div class="subsection">
+                            <h2>FINAL PROTOTYPE</h2>
+                            <div class="subsection-content">
                                 <p>Interactive prototype demonstrating the end-to-end ticket purchasing experience.</p>
                                 <div class="demo">
                                     <iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/proto/XJy2UnMvDEbxYEkkvDMBMz/HCDE-308-Sophia-Tang?page-id=0%3A1&node-id=333-14031&viewport=775%2C-8633%2C0.53&scaling=scale-down&content-scaling=fixed&starting-point-node-id=333%3A14031&embed-host=share" allowfullscreen></iframe>
-                                </div>
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -383,35 +389,37 @@
 
         <!-- Next Up Section -->
         <section class="more-projects-section">
-            <h2>Next Up...</h2>
-            <div class="more-projects-grid">
-                <a href="#" class="more-project-wrapper">
-                    <div class="more-project-card sprout"></div>
-                    <div class="more-project-info">
-                        <div class="more-project-header">
-                            <h3 class="more-project-title">Sprout</h3>
-                            <div class="more-project-tags">
-                                <span class="more-project-tag">Visual Design System</span>
-                                <span class="more-project-tag">Mobile App Design</span>
+            <div class="more-projects-container">
+                <h2>Next Up...</h2>
+                <div class="more-projects-grid">
+                    <a href="/work/sprout" class="more-project-wrapper">
+                        <div class="more-project-card sprout"></div>
+                        <div class="more-project-info">
+                            <div class="more-project-header">
+                                <h3 class="more-project-title">Sprout</h3>
+                                <div class="more-project-tags">
+                                    <span class="more-project-tag">Visual Design System</span>
+                                    <span class="more-project-tag">Mobile App Design</span>
+                                </div>
                             </div>
+                            <p class="more-project-description">A design system for sustainable living</p>
                         </div>
-                        <p class="more-project-description">A design system for sustainable living</p>
-                    </div>
-                </a>
-                <a href="turtlup.html" class="more-project-wrapper">
-                    <div class="more-project-card turtlup"></div>
-                    <div class="more-project-info">
-                        <div class="more-project-header">
-                            <h3 class="more-project-title">TurtlUp</h3>
-                            <div class="more-project-tags">
-                                <span class="more-project-tag">Development</span>
-                                <span class="more-project-tag">Hardware</span>
-                                <span class="more-project-tag">Web</span>
+                    </a>
+                    <a href="/work/turtlup" class="more-project-wrapper">
+                        <div class="more-project-card turtlup"></div>
+                        <div class="more-project-info">
+                            <div class="more-project-header">
+                                <h3 class="more-project-title">TurtlUp</h3>
+                                <div class="more-project-tags">
+                                    <span class="more-project-tag">Development</span>
+                                    <span class="more-project-tag">Hardware</span>
+                                    <span class="more-project-tag">Web</span>
+                                </div>
                             </div>
+                            <p class="more-project-description">Posture-sensing wearable with real-time feedback</p>
                         </div>
-                        <p class="more-project-description">Posture-sensing wearable with real-time feedback</p>
-                    </div>
-                </a>
+                    </a>
+                </div>
             </div>
         </section>
 

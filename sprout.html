@@ -18,11 +18,11 @@
                     <div class="nav-wrapper">
                         <div class="nav-content">
                             <div class="logo-wrapper">
-                                <a href="index.html" class="nav-link">Sophia Tang</a>
+                                <a href="/" class="nav-link">Sophia Tang</a>
                             </div>
                             <div class="nav-links">
-                                <a href="index.html#work" class="nav-link">Work</a>
-                                <a href="about.html" class="nav-link">About</a>
+                                <a href="/#work" class="nav-link">Work</a>
+                                <a href="/about" class="nav-link">About</a>
                                 <a href="#" class="nav-link external-link">Resume</a>
                             </div>
                         </div>
@@ -66,11 +66,7 @@
                     </div>
                 </div>
             </div>
-            <!-- Placeholder image until sprout assets are added -->
-            <div style="width: 100%; height: 400px; background: radial-gradient(50% 50% at 50% 50%, #e45969, #f0b99c); margin-top: 20px; display: flex; align-items: center; justify-content: center; border-radius: 12px;">
-                <p style="font-family: 'Roboto Mono', monospace; color: white; font-size: 24px;">Sprout Project Mockup</p>
-            </div>
-            <!-- <img src="img/sprout/sprout_mockup.png" alt="Sprout App Mockup" class="hero-mockup-img"> -->
+            <img src="img/sprout/sprout_mockup.png" alt="Sprout Mobile App Mockup" class="hero-mockup-img">
         </section>
 
         <!-- Overview Section -->
@@ -81,23 +77,165 @@
                         <div class="project-text">
                             <h2>CONTEXT</h2>
                             <p>Sprout is a mobile application designed to help users adopt more sustainable living habits through personalized challenges, community engagement, and impact tracking.</p>
-                        </div>
-                    </div>
 
-                    <div class="project-details project-gap">
-                        <div class="project-text">
-                            <h2>RESEARCH</h2>
-                            <div class="subsection">
-                                <p>Research content for Sprout will go here.</p>
+                            <div class="flip-card" role="button" tabindex="0" aria-label="Flip card to reveal solution">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <span class="hmw-icon" aria-hidden="true">💭</span>
+                                        <h3>HMW design to support undergrad UW STEM students in Seattle with managing anxiety throughout the school year?</h3>
+                                        <span class="flip-hint">Click to reveal solution →</span>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <span class="solution-icon" aria-hidden="true">✨</span>
+                                        <h3>A digital self-care app integrated with an optional companion plant for a holistic well-being experience.</h3>
+                                        <span class="flip-hint">← Click to see question</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="project-details project-gap">
                         <div class="project-text">
-                            <h2>DESIGN</h2>
-                            <div class="subsection">
-                                <p>Design process and artifacts for Sprout will go here.</p>
+                            <h2>RESEARCH</h2>
+                            <div class="subsection-content">
+                                <h3>User Research</h3>
+                                <p>We wanted to gain a better understanding of how undergraduate STEM students at UW experience and cope with anxiety. After interviewing several students, we identified a few common grievances and key insights.</p>
+                                <div class="insights-cards">
+                                    <div class="insight-card">
+                                        <h4>Invisible Burnout</h4>
+                                        <p class="insight-quote">“I tell myself I’m okay, then midterms happen and everything hits at once.”</p>
+                                        <p class="insight-takeaway">Students often miss early anxiety signs, normalizing stress until they reach a breaking point.</p>
+                                    </div>
+                                    <div class="insight-card">
+                                        <h4>Guilt Around Rest</h4>
+                                        <p class="insight-quote">“I feel like I need to justify every hour I’m not working.”</p>
+                                        <p class="insight-takeaway">Rest feels unearned or irresponsible, causing guilt even during exhaustion.</p>
+                                    </div>
+                                    <div class="insight-card">
+                                        <h4>Self-Care as ‘Another Task’</h4>
+                                        <p class="insight-quote">“I get reminders to meditate, but when I’m stressed, I don’t even want to open it.”</p>
+                                        <p class="insight-takeaway">Self-care routines often feel like extra work rather than genuine support.</p>
+                                    </div>
+                                    <div class="insight-card">
+                                        <h4>Need for Emotional Validation</h4>
+                                        <p class="insight-quote">“It helps when something checks in on me without asking too much.”</p>
+                                        <p class="insight-takeaway">Students prefer non-judgmental validation of their feelings over immediate solutions.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="subsection-content">
+                                <h3>User Personas</h3>
+                                <p>We developed two main user personas that best embodied our target audience’s needs, painpoints and goals. </p>
+                                <div class="persona-grid">
+                                    <img src="img/sprout/persona1.svg" alt="User Persona 1">
+                                    <img src="img/sprout/persona2.svg" alt="User Persona 2">
+                                </div>
+                            </div>
+                            <div class="subsection-content">
+                              <h3>User Journey Map</h3>
+                              <p>We created a user journey map for our user persona, Sarah, to visualize the user's journey going through an anxiety spike during the school year.</p>
+                              <img src="img/sprout/user_journey_map.svg" alt="User Journey Map" class="assets-img">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-details project-gap">
+                      <div class="project-text">
+                          <h2>SYSTEM ARCHITECTURE</h2>
+                          <div class="subsection-content">
+                              <h3>Information Architecture</h3>
+                              <p>Visualizing the structure and organization of the app to ensure intuitive navigation.</p>
+                              <img src="img/sprout/information_architecture_diagram.svg" alt="Information Architecture Diagram" class="assets-img">
+                          </div>
+                          <div class="subsection-content">
+                              <h3>State Transition</h3>
+                              <p>Mapping out the dynamic states of key interactive components.</p>
+                              <img src="img/sprout/state_transition_diagram.svg" alt="State Transition Diagram" class="assets-img" style="width: 80%; margin: 0 auto;">
+                          </div>
+                      </div>
+                  </div>
+
+                    <div class="project-details project-gap">
+                        <div class="project-text">
+                            <h2>APP WIREFRAMES</h2>
+                            <div class="subsection-content">
+                                <h3>Low Fidelity Wireframes</h3>
+                                <p>Initial wireframes exploring the core user flows and interactions for the self-care app.</p>
+                                <div class="wireframes-slider">
+                                    <img src="img/sprout/lofi_wireframe_1.svg" alt="Low Fidelity Wireframe 1">
+                                    <img src="img/sprout/lofi_wireframe_2.svg" alt="Low Fidelity Wireframe 2">
+                                    <img src="img/sprout/lofi_wireframe_3.svg" alt="Low Fidelity Wireframe 3">
+                                    <img src="img/sprout/lofi_wireframe_4.svg" alt="Low Fidelity Wireframe 4">
+                                    <img src="img/sprout/lofi_wireframe_5.svg" alt="Low Fidelity Wireframe 5">
+                                    <img src="img/sprout/lofi_wireframe_6.svg" alt="Low Fidelity Wireframe 6">
+                                    <img src="img/sprout/lofi_wireframe_7.svg" alt="Low Fidelity Wireframe 7">
+                                </div>
+                            </div>
+                            <div class="subsection-content">
+                                <h3>Mid Fidelity Wireframes</h3>
+                                <p>Refined wireframes with more detailed interactions and visual hierarchy.</p>
+                                <div class="wireframes-slider">
+                                    <img src="img/sprout/midfi_wireframe_1.svg" alt="Mid Fidelity Wireframe 1">
+                                    <img src="img/sprout/midfi_wireframe_2.svg" alt="Mid Fidelity Wireframe 2">
+                                    <img src="img/sprout/midfi_wireframe_3.svg" alt="Mid Fidelity Wireframe 3">
+                                    <img src="img/sprout/midfi_wireframe_4.svg" alt="Mid Fidelity Wireframe 4">
+                                    <img src="img/sprout/midfi_wireframe_5.svg" alt="Mid Fidelity Wireframe 5">
+                                    <img src="img/sprout/midfi_wireframe_6.svg" alt="Mid Fidelity Wireframe 6">
+                                    <img src="img/sprout/midfi_wireframe_7.svg" alt="Mid Fidelity Wireframe 7">
+                                    <img src="img/sprout/midfi_wireframe_8.svg" alt="Mid Fidelity Wireframe 8">
+                                    <img src="img/sprout/midfi_wireframe_9.svg" alt="Mid Fidelity Wireframe 9">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-details project-gap">
+                        <div class="project-text">
+                            <h2>Visual Language</h2>
+                            <div class="subsection-content">
+                                <div class="visual-language-grid design-kit-ratio">
+                                    <div class="ui-tiles-group design-kit-group">
+                                        <div class="design-kit-subgroup">
+                                            <h3>Typography</h3>
+                                            <div class="design-kit-card" style="flex-direction: column; align-items: flex-start; gap: 20px;">
+                                                <img src="img/sprout/typography.svg" alt="Typography" class="assets-img">
+                                            </div>
+                                        </div>
+                                        <div class="design-kit-subgroup">
+                                            <h3>Icons</h3>
+                                            <div class="design-kit-card">
+                                                <img src="img/sprout/icons.svg" alt="Icons" class="assets-img">
+                                            </div>
+                                        </div>
+                                        <div class="design-kit-subgroup">
+                                            <h3>Graphics & Colors</h3>
+                                            <div class="design-kit-card">
+                                                <img src="img/sprout/graphics_and_colors.svg" alt="Graphics and Colors" class="assets-img">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ui-tiles-group design-kit-group">
+                                        <div class="design-kit-subgroup">
+                                            <h3>UI Components</h3>
+                                            <div class="design-kit-card">
+                                                <img src="img/sprout/ui_components.svg" alt="UI Components" class="assets-img">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-details project-gap">
+                        <div class="project-text">
+                            <h2>FINAL PROTOTYPE</h2>
+                            <div class="subsection-content">
+                                <p>Interactive prototype demonstrating the end-to-end self-care app experience.</p>
+                                <div class="demo">
+                                    <!-- Figma prototype embed will be added here -->
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -128,35 +266,37 @@
 
         <!-- Next Up Section -->
         <section class="more-projects-section">
-            <h2>Next Up...</h2>
-            <div class="more-projects-grid">
-                <a href="spring.html" class="more-project-wrapper">
-                    <div class="more-project-card spring"></div>
-                    <div class="more-project-info">
-                        <div class="more-project-header">
-                            <h3 class="more-project-title">Spring</h3>
-                            <div class="more-project-tags">
-                                <span class="more-project-tag">Visual Design System</span>
-                                <span class="more-project-tag">Mobile App Design</span>
+            <div class="more-projects-container">
+                <h2>Next Up...</h2>
+                <div class="more-projects-grid">
+                    <a href="/work/spring" class="more-project-wrapper">
+                        <div class="more-project-card spring"></div>
+                        <div class="more-project-info">
+                            <div class="more-project-header">
+                                <h3 class="more-project-title">Spring</h3>
+                                <div class="more-project-tags">
+                                    <span class="more-project-tag">Visual Design System</span>
+                                    <span class="more-project-tag">Mobile App Design</span>
+                                </div>
                             </div>
+                            <p class="more-project-description">Springtime Picnic Festival</p>
                         </div>
-                        <p class="more-project-description">Springtime Picnic Festival</p>
-                    </div>
-                </a>
-                <a href="turtlup.html" class="more-project-wrapper">
-                    <div class="more-project-card turtlup"></div>
-                    <div class="more-project-info">
-                        <div class="more-project-header">
-                            <h3 class="more-project-title">TurtlUp</h3>
-                            <div class="more-project-tags">
-                                <span class="more-project-tag">Development</span>
-                                <span class="more-project-tag">Hardware</span>
-                                <span class="more-project-tag">Web</span>
+                    </a>
+                    <a href="/work/turtlup" class="more-project-wrapper">
+                        <div class="more-project-card turtlup"></div>
+                        <div class="more-project-info">
+                            <div class="more-project-header">
+                                <h3 class="more-project-title">TurtlUp</h3>
+                                <div class="more-project-tags">
+                                    <span class="more-project-tag">Development</span>
+                                    <span class="more-project-tag">Hardware</span>
+                                    <span class="more-project-tag">Web</span>
+                                </div>
                             </div>
+                            <p class="more-project-description">Posture-sensing wearable with real-time feedback</p>
                         </div>
-                        <p class="more-project-description">Posture-sensing wearable with real-time feedback</p>
-                    </div>
-                </a>
+                    </a>
+                </div>
             </div>
         </section>
 
