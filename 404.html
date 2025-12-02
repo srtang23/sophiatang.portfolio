@@ -13,13 +13,20 @@
             // Remove trailing slash
             path = path.replace(/\/$/, '');
             
-            // Handle /work/ clean URLs
+            // Handle /work/ clean URLs - redirect to directory structure
             var workRedirects = {
-                '/work/sprout': '/work/sprout.html',
-                '/work/spring': '/work/spring.html',
-                '/work/turtlup': '/work/turtlup.html',
-                '/work/hcde351': '/work/hcde351.html'
+                '/work/sprout': '/work/sprout/',
+                '/work/spring': '/work/spring/',
+                '/work/turtlup': '/work/turtlup/',
+                '/work/hcde351': '/work/hcde351/'
             };
+            
+            // Also handle .html extensions - redirect to clean URLs
+            if (path.endsWith('.html') && path.startsWith('/work/')) {
+                var cleanPath = path.replace('.html', '/');
+                window.location.replace(cleanPath + search + hash);
+                return;
+            }
             
             // Handle other clean URLs
             var otherRedirects = {
