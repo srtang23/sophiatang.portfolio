@@ -1,4 +1,4 @@
-# Sophia Tang - Portfolio Website
+# Sophia Tang's Portfolio
 
 Welcome to my personal portfolio website! This is a custom-built website that showcases my work as a UX and Product Designer. This portfolio website was designed and developed from scratch to reflect my design and technical skills.
 
