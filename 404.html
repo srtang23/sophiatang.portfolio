@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <script>
+        // GitHub Pages 404.html redirect handler for clean URLs
+        (function() {
+            var path = window.location.pathname;
+            var search = window.location.search;
+            var hash = window.location.hash;
+
+            // Handle /work/ clean URLs
+            var workRedirects = {
+                '/work/sprout': '/work/sprout.html',
+                '/work/spring': '/work/spring.html',
+                '/work/turtlup': '/work/turtlup.html',
+                '/work/hcde351': '/work/hcde351.html'
+            };
+
+            // Handle other clean URLs
+            var otherRedirects = {
+                '/about': '/about.html'
+            };
+
+            // Combine all redirects
+            var allRedirects = Object.assign({}, workRedirects, otherRedirects);
+
+            // Check if current path needs redirect
+            if (allRedirects[path]) {
+                var newUrl = allRedirects[path] + search + hash;
+                window.location.replace(newUrl);
+            } else {
+                // If no redirect found, show 404 message
+                document.body.innerHTML = '<h1>404 - Page Not Found</h1><p>The page you are looking for does not exist.</p><a href="/">Go to homepage</a>';
+            }
+        })();
+    </script>
+    <noscript>
+        <meta http-equiv="refresh" content="0; url=/">
+    </noscript>
+</head>
+<body>
+    <p>Redirecting...</p>
+</body>
+</html>
+
