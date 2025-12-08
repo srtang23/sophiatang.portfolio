@@ -17,8 +17,15 @@
         l.hash
       );
     </script>
+    <noscript>
+      <meta http-equiv="refresh" content="0; url=/?/" />
+    </noscript>
   </head>
   <body>
+    <script type="text/javascript">
+      // Fallback redirect if JavaScript is disabled
+      window.location.replace('/?/' + window.location.pathname.slice(1));
+    </script>
   </body>
 </html>
 
