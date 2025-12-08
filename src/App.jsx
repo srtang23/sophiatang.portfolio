@@ -1,6 +1,7 @@
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import Layout from './components/Layout'
+import ScrollToTop from './components/ScrollToTop'
 import Home from './pages/Home'
 import About from './pages/About'
 import Spring from './pages/work/Spring'
@@ -29,6 +30,7 @@ function RedirectHandler() {
 function App() {
   return (
     <>
+      <ScrollToTop />
       <RedirectHandler />
       <Routes>
         <Route path="/" element={<Layout><Home /></Layout>} />
