@@ -4,17 +4,19 @@ import TableOfContents from '../../components/TableOfContents'
 import FlipCard from '../../components/FlipCard'
 import MoreProjects from '../../components/MoreProjects'
 import ContactSection from '../../components/ContactSection'
+import { useScrollReveal } from '../../hooks/useScrollReveal'
 
 function Sprout() {
   const wireframesSliderRef = useRef(null)
   const midfiSliderRef = useRef(null)
+  useScrollReveal()
 
   useEffect(() => {
     document.body.className = 'sprout-project'
 
-    // Initialize wireframes drag scroll
+    // Initialize wireframes drag scroll - wait for refs to be ready
     const initDragScroll = (slider) => {
-      if (!slider) return
+      if (!slider) return null
 
       let isDown = false
       let startX
@@ -58,12 +60,24 @@ function Sprout() {
       }
     }
 
-    const cleanup1 = initDragScroll(wireframesSliderRef.current)
-    const cleanup2 = initDragScroll(midfiSliderRef.current)
+    // Wait for refs to be populated
+    const setupSliders = () => {
+      const cleanup1 = initDragScroll(wireframesSliderRef.current)
+      const cleanup2 = initDragScroll(midfiSliderRef.current)
+      return () => {
+        if (cleanup1) cleanup1()
+        if (cleanup2) cleanup2()
+      }
+    }
+
+    const timeout1 = setTimeout(setupSliders, 100)
+    const timeout2 = setTimeout(setupSliders, 500)
+    const cleanup = setupSliders()
 
     return () => {
-      if (cleanup1) cleanup1()
-      if (cleanup2) cleanup2()
+      clearTimeout(timeout1)
+      clearTimeout(timeout2)
+      if (cleanup) cleanup()
     }
   }, [])
 

@@ -9,11 +9,5 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
   },
-  // Ensure proper MIME types for GitHub Pages
-  server: {
-    headers: {
-      'Content-Type': 'application/javascript',
-    },
-  },
 })
 

@@ -6,6 +6,7 @@ import MoreProjects from '../../components/MoreProjects'
 import ContactSection from '../../components/ContactSection'
 import { useSpringButton } from '../../hooks/useSpringButton'
 import { useSpringInput } from '../../hooks/useSpringInput'
+import { useScrollReveal } from '../../hooks/useScrollReveal'
 
 function Spring() {
   const [modalOpen, setModalOpen] = useState(false)
@@ -14,6 +15,7 @@ function Spring() {
   const secondaryButton = useSpringButton()
   const input = useSpringInput()
   const wireframesSliderRef = useRef(null)
+  useScrollReveal()
 
   const artifactImages = [
     { src: '/img/spring/poster_mockup.png', alt: 'Poster Mockup 1' },
@@ -72,37 +74,52 @@ function Spring() {
   }, [])
 
   useEffect(() => {
-    // Visual Language Alignment
-    const img = document.querySelector('.mood-board-img')
-    const strip = document.querySelector('.color-strip')
-    const contrastBoxes = document.querySelectorAll('.contrast-box')
+    // Visual Language Alignment - wait for DOM to be ready
+    const setupAlignment = () => {
+      const img = document.querySelector('.mood-board-img')
+      const strip = document.querySelector('.color-strip')
+      const contrastBoxes = document.querySelectorAll('.contrast-box')
 
-    if (!img || !strip) return
+      if (!img || !strip) return
 
-    const align = () => {
-      const height = img.offsetHeight
-      if (height > 0) {
-        strip.style.height = height + 'px'
-        const blockHeight = height / 9
-        strip.style.width = blockHeight + 'px'
-        contrastBoxes.forEach(box => {
-          box.style.height = blockHeight + 'px'
-        })
+      const align = () => {
+        const height = img.offsetHeight
+        if (height > 0) {
+          strip.style.height = height + 'px'
+          const blockHeight = height / 9
+          strip.style.width = blockHeight + 'px'
+          contrastBoxes.forEach(box => {
+            box.style.height = blockHeight + 'px'
+          })
+        }
       }
+
+      if (img.complete) {
+        align()
+      } else {
+        img.onload = align
+      }
+
+      window.addEventListener('resize', align)
+      setTimeout(align, 100)
+      setTimeout(align, 500)
+      setTimeout(align, 1000)
+
+      return () => window.removeEventListener('resize', align)
     }
 
-    if (img.complete) {
-      align()
-    } else {
-      img.onload = align
+    // Try multiple times to catch when DOM is ready
+    const timeout1 = setTimeout(setupAlignment, 100)
+    const timeout2 = setTimeout(setupAlignment, 500)
+    const timeout3 = setTimeout(setupAlignment, 1000)
+    const cleanup = setupAlignment()
+
+    return () => {
+      clearTimeout(timeout1)
+      clearTimeout(timeout2)
+      clearTimeout(timeout3)
+      if (cleanup) cleanup()
     }
-
-    window.addEventListener('resize', align)
-    setTimeout(align, 100)
-    setTimeout(align, 500)
-    setTimeout(align, 1000)
-
-    return () => window.removeEventListener('resize', align)
   }, [])
 
   const handleImageClick = (index) => {

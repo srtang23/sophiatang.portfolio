@@ -6,44 +6,59 @@ function TableOfContents() {
   const tocRef = useRef(null)
 
   useEffect(() => {
-    const heroSection = document.querySelector('.hero-section')
-    const projectSections = document.querySelectorAll('.project-section')
+    // Wait for DOM to be ready
+    const collectHeadings = () => {
+      const heroSection = document.querySelector('.hero-section')
+      const projectSections = document.querySelectorAll('.project-section')
 
-    const collectedHeadings = []
+      const collectedHeadings = []
 
-    if (heroSection) {
-      heroSection.querySelectorAll('h2, h3').forEach(heading => {
-        const text = heading.textContent.trim()
-        if (!['TURTLUP', 'SPRING', 'SPROUT', 'HCDE 351', 'ROLE', 'EXPERTISE', 'TEAM', 'YEAR', 'DEMO'].includes(text.toUpperCase())) {
-          collectedHeadings.push(heading)
+      if (heroSection) {
+        heroSection.querySelectorAll('h2, h3').forEach(heading => {
+          const text = heading.textContent.trim()
+          if (!['TURTLUP', 'SPRING', 'SPROUT', 'HCDE 351', 'ROLE', 'EXPERTISE', 'TEAM', 'YEAR', 'DEMO'].includes(text.toUpperCase())) {
+            collectedHeadings.push(heading)
+          }
+        })
+      }
+
+      projectSections.forEach(section => {
+        section.querySelectorAll('h2, h3').forEach(heading => {
+          if (!heading.closest('.flip-card')) {
+            collectedHeadings.push(heading)
+          }
+        })
+      })
+
+      collectedHeadings.forEach((heading, index) => {
+        if (!heading.id) {
+          const text = heading.textContent.trim().toLowerCase()
+            .replace(/[^\w\s-]/g, '')
+            .replace(/\s+/g, '-')
+          heading.id = `section-${text}-${index}`
         }
       })
+
+      setHeadings(collectedHeadings)
+
+      if (collectedHeadings.length > 0) {
+        const sidebar = document.querySelector('.floating-sidebar')
+        if (sidebar) {
+          sidebar.classList.add('visible')
+        }
+      }
     }
 
-    projectSections.forEach(section => {
-      section.querySelectorAll('h2, h3').forEach(heading => {
-        if (!heading.closest('.flip-card')) {
-          collectedHeadings.push(heading)
-        }
-      })
-    })
+    // Try immediately, then with delays to catch late-rendering content
+    collectHeadings()
+    const timeout1 = setTimeout(collectHeadings, 100)
+    const timeout2 = setTimeout(collectHeadings, 500)
+    const timeout3 = setTimeout(collectHeadings, 1000)
 
-    collectedHeadings.forEach((heading, index) => {
-      if (!heading.id) {
-        const text = heading.textContent.trim().toLowerCase()
-          .replace(/[^\w\s-]/g, '')
-          .replace(/\s+/g, '-')
-        heading.id = `section-${text}-${index}`
-      }
-    })
-
-    setHeadings(collectedHeadings)
-
-    if (collectedHeadings.length > 0) {
-      const sidebar = document.querySelector('.floating-sidebar')
-      if (sidebar) {
-        sidebar.classList.add('visible')
-      }
+    return () => {
+      clearTimeout(timeout1)
+      clearTimeout(timeout2)
+      clearTimeout(timeout3)
     }
   }, [])
 

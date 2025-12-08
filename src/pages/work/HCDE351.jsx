@@ -1,7 +1,10 @@
 import TableOfContents from '../../components/TableOfContents'
 import ContactSection from '../../components/ContactSection'
+import { useScrollReveal } from '../../hooks/useScrollReveal'
 
 function HCDE351() {
+  useScrollReveal()
+
   return (
     <>
       <TableOfContents />

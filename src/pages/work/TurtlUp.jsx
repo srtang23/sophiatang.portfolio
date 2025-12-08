@@ -4,10 +4,12 @@ import FlipCard from '../../components/FlipCard'
 import MoreProjects from '../../components/MoreProjects'
 import ContactSection from '../../components/ContactSection'
 import { usePrototypeSlider } from '../../hooks/usePrototypeSlider'
+import { useScrollReveal } from '../../hooks/useScrollReveal'
 
 function TurtlUp() {
   const wireframesSliderRef = useRef(null)
   const { sliderRef, prevBtnRef, nextBtnRef } = usePrototypeSlider()
+  useScrollReveal()
 
   useEffect(() => {
     // Initialize wireframes drag scroll
