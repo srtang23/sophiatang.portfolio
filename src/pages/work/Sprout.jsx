@@ -116,7 +116,7 @@ function Sprout() {
             </div>
             <div>
               <h2>Team</h2>
-              <p>Solo Project</p>
+              <p>Brianna Lynn Smith,<br />Rhiannon Hayes-McQueen,<br />Tucker Swarens</p>
             </div>
             <div>
               <h2>Year</h2>
