@@ -9,31 +9,36 @@ import Sprout from './pages/work/Sprout'
 import TurtlUp from './pages/work/TurtlUp'
 import HCDE351 from './pages/work/HCDE351'
 
-// Handle GitHub Pages 404 redirect
-function RedirectHandler() {
-  const location = useLocation()
+// Handle GitHub Pages 404 redirect - check synchronously before render
+function useGitHubPagesRedirect() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    // Check if we're in a GitHub Pages 404 redirect scenario
-    const query = new URLSearchParams(location.search)
+    // Check for GitHub Pages redirect pattern: /?/path
+    const query = new URLSearchParams(window.location.search)
     const redirectPath = query.get('/')
+
     if (redirectPath) {
-      // Clean up the URL and navigate to it
-      const cleanPath = redirectPath.replace(/~and~/g, '&').replace(/^\/+/, '/')
-      // Use React Router navigate to properly handle the route
+      // Clean up the URL
+      let cleanPath = redirectPath.replace(/~and~/g, '&')
+      if (!cleanPath.startsWith('/')) {
+        cleanPath = '/' + cleanPath
+      }
+
+      // Update URL immediately and navigate
+      window.history.replaceState({}, '', cleanPath)
       navigate(cleanPath, { replace: true })
     }
-  }, [location, navigate])
-
-  return null
+  }, [navigate])
 }
 
 function App() {
+  const location = useLocation()
+  useGitHubPagesRedirect()
+
   return (
     <>
       <ScrollToTop />
-      <RedirectHandler />
       <Routes>
         <Route path="/" element={<Layout><Home /></Layout>} />
         <Route path="/about" element={<Layout><About /></Layout>} />
@@ -49,4 +54,3 @@ function App() {
 }
 
 export default App
-
