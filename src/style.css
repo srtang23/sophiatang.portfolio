@@ -578,16 +578,16 @@ body:has(.project-section) .hero-description {
 }
 
 .project-card.spring {
-    background: url('img/spring/spring_mockup.png') center/cover no-repeat;
+    background: url('/img/spring/spring_mockup.png') center/cover no-repeat;
 }
 
 .project-card.sprout {
-    background: url('img/sprout/sprout_mockup.png') center/cover no-repeat;
+    background: url('/img/sprout/sprout_mockup.png') center/cover no-repeat;
 }
 
 .project-card.turtlup {
     background:
-        url('img/turtlup/posture_stats.GIF') center/75% no-repeat,
+        url('/img/turtlup/posture_stats.GIF') center/75% no-repeat,
         linear-gradient(135deg, #f5f7fa 0%, #e8f4f8 100%);
 }
 
@@ -2429,17 +2429,17 @@ body:has(.project-section) .hero-description {
 }
 
 .more-project-card.sprout {
-    background: url('img/sprout/sprout_mockup.png') center/cover no-repeat;
+    background: url('/img/sprout/sprout_mockup.png') center/cover no-repeat;
 }
 
 .more-project-card.turtlup {
     background:
-        url('img/turtlup/posture_stats.GIF') center/75% no-repeat,
+        url('/img/turtlup/posture_stats.GIF') center/75% no-repeat,
         linear-gradient(135deg, #f5f7fa 0%, #e8f4f8 100%);
 }
 
 .more-project-card.spring {
-    background: url('img/spring/spring_mockup.png') center/cover no-repeat;
+    background: url('/img/spring/spring_mockup.png') center/cover no-repeat;
 }
 
 /* Duplicate removed */
