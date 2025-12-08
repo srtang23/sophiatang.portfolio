@@ -104,18 +104,33 @@ function TableOfContents() {
 
   return (
     <div className="floating-sidebar">
+      <div className="sidebar-indicator">
+        {headings.map((heading, index) => {
+          const isH3 = heading.tagName === 'H3'
+          const isActive = activeHeading === heading
+          return (
+            <div
+              key={index}
+              className={`sidebar-dot ${isH3 ? 'h3-dot' : 'h2-dot'} ${isActive ? 'active' : ''}`}
+            />
+          )
+        })}
+      </div>
       <div className="sidebar-content">
         <nav className="table-of-contents" ref={tocRef} id="tableOfContents">
-          {headings.map((heading, index) => (
-            <a
-              key={index}
-              href={`#${heading.id}`}
-              className={activeHeading === heading ? 'active' : ''}
-              onClick={(e) => handleClick(e, heading)}
-            >
-              {heading.textContent.trim()}
-            </a>
-          ))}
+          {headings.map((heading, index) => {
+            const isH3 = heading.tagName === 'H3'
+            return (
+              <a
+                key={index}
+                href={`#${heading.id}`}
+                className={`${isH3 ? 'toc-h3' : ''} ${activeHeading === heading ? 'active' : ''}`}
+                onClick={(e) => handleClick(e, heading)}
+              >
+                {heading.textContent.trim()}
+              </a>
+            )
+          })}
         </nav>
       </div>
     </div>

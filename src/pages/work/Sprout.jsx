@@ -238,7 +238,7 @@ function Sprout() {
 
             <div className="project-details project-gap">
               <div className="project-text">
-                <h2>Visual Language</h2>
+                <h2>VISUAL LANGUAGE</h2>
                 <div className="subsection-content">
                   <div className="visual-language-grid design-kit-ratio">
                     <div className="ui-tiles-group design-kit-group">

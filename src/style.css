@@ -2310,24 +2310,25 @@ body:has(.project-section) .hero-description {
 .table-of-contents {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
 }
 
 .table-of-contents a {
     font-family: 'Satoshi', sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 400;
-    color: var(--medium-gray);
+    color: rgba(0, 0, 0, 0.65);
     text-decoration: none;
     padding: 4px 0;
-    transition: opacity 0.2s ease;
+    transition: color 0.2s ease;
     display: block;
-    line-height: 1.5;
-    letter-spacing: 0.1em;
+    line-height: 1.6;
+    letter-spacing: 0.02em;
+    text-transform: none;
 }
 
 .table-of-contents a:hover {
-    opacity: 0.7;
+    color: var(--black);
 }
 
 .table-of-contents a.active {
@@ -2337,16 +2338,16 @@ body:has(.project-section) .hero-description {
 
 .table-of-contents .toc-h3 {
     padding-left: 16px;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 400;
-    letter-spacing: normal;
+    letter-spacing: 0.01em;
     text-transform: none;
-    line-height: 1.5;
-    color: var(--medium-gray);
+    line-height: 1.6;
+    color: rgba(0, 0, 0, 0.6);
+    margin-top: 0;
 }
 
 .table-of-contents .toc-h3:hover {
-    opacity: 0.7;
     color: var(--black);
 }
 
