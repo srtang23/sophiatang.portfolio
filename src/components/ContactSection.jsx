@@ -1,4 +1,44 @@
+import { useEffect } from 'react'
+
 function ContactSection() {
+  useEffect(() => {
+    // Initialize contact section animations (scroll-based, consistent with site)
+    const contactTitle = document.querySelector('.contact-title-container')
+    const contactRows = document.querySelectorAll('.contact-row')
+    const contactObserverOptions = {
+      threshold: 0.2,
+      rootMargin: '0px 0px -50px 0px'
+    }
+
+    const contactObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible')
+          contactObserver.unobserve(entry.target)
+        }
+      })
+    }, contactObserverOptions)
+
+    if (contactTitle) {
+      contactTitle.style.transitionDelay = '0s'
+      contactObserver.observe(contactTitle)
+    }
+
+    contactRows.forEach((row, index) => {
+      row.style.transitionDelay = `${(index + 1) * 0.1}s`
+      contactObserver.observe(row)
+    })
+
+    return () => {
+      if (contactTitle) {
+        contactObserver.unobserve(contactTitle)
+      }
+      contactRows.forEach((row) => {
+        contactObserver.unobserve(row)
+      })
+    }
+  }, [])
+
   return (
     <section className="contact-section" id="contact">
       <div className="contact-grid">

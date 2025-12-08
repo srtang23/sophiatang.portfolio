@@ -1,11 +1,12 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import ProjectCard from '../components/ProjectCard'
+import ContactSection from '../components/ContactSection'
 
 function Home() {
   useEffect(() => {
     // Initialize index page animations
-    initIndexPageAnimations()
+    const cleanup = initIndexPageAnimations()
 
     // Add hover effects for project cards
     const projectCards = document.querySelectorAll('.project-card')
@@ -40,6 +41,7 @@ function Home() {
         card.removeEventListener('mouseenter', () => {})
         card.removeEventListener('mouseleave', () => {})
       })
+      if (cleanup) cleanup()
     }
   }, [])
 
@@ -75,14 +77,35 @@ function Home() {
 
     // Staggered reveal for project cards
     const projectCards = document.querySelectorAll('.project-card-wrapper')
+    let lastScrollY = window.scrollY
+    let scrollDirection = 'down'
+
+    // Track scroll direction more reliably
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+      scrollDirection = currentScrollY > lastScrollY ? 'down' : 'up'
+      lastScrollY = currentScrollY
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+
     const observerOptions = {
-      threshold: 0.2,
-      rootMargin: '0px 0px -50px 0px'
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
     }
 
     const cardObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
+        // Only animate when scrolling down and element is entering from below
+        const rect = entry.boundingClientRect
+        const viewportHeight = window.innerHeight
+        const isBelowViewport = rect.top > viewportHeight
+        const isEnteringFromBelow = rect.top > 0 && rect.top < viewportHeight
+
+        // Only animate if:
+        // 1. We're scrolling down
+        // 2. The card is intersecting
+        // 3. The card's top is in the viewport (entering from below, not already above)
+        if (entry.isIntersecting && scrollDirection === 'down' && isEnteringFromBelow) {
           entry.target.classList.add('visible')
           cardObserver.unobserve(entry.target)
         }
@@ -90,9 +113,18 @@ function Home() {
     }, observerOptions)
 
     projectCards.forEach((card, index) => {
-      card.style.transitionDelay = `${index * 0.15}s`
-      cardObserver.observe(card)
+      // Only observe cards that are initially below the viewport
+      const rect = card.getBoundingClientRect()
+      if (rect.top > window.innerHeight) {
+        card.style.transitionDelay = `${index * 0.15}s`
+        cardObserver.observe(card)
+      }
     })
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      cardObserver.disconnect()
+    }
   }
 
   return (
@@ -102,9 +134,8 @@ function Home() {
         <h1 className="hero-title">Hi, I'm Sophia!</h1>
         <div className="hero-description">
           <p>A current undergrad student @ HCDE.</p>
-          <p>I'm a UX and Product Designer dedicated to create accessible and inclusive user experiences.</p>
           <br />
-          <p>I'm passionate in bridging the gap between design and code.</p>
+          <p>I'm a UX & Product Designer with engineering mindset, bridging design and development.</p>
         </div>
         <a href="https://www.linkedin.com/in/sophia-tang-5a087b256/" className="linkedin-button">
           <div className="linkedin-button-text">
@@ -117,6 +148,13 @@ function Home() {
       {/* Projects Section */}
       <section className="projects-section" id="work">
         <ProjectCard
+          project="portfolio"
+          title="This Website!"
+          description="A custom-built portfolio website showcasing my work as a UX & Product Designer"
+          tags={["Development", "Vibe Coding", "Web"]}
+          link="/work/portfolio"
+        />
+        <ProjectCard
           project="sprout"
           title="Sprout"
           description="A design system for sustainable living"
@@ -124,18 +162,18 @@ function Home() {
           link="/work/sprout"
         />
         <ProjectCard
+          project="spring"
+          title="Spring"
+          description="Springtime Picnic Festival"
+          tags={["Design System", "UI/UX", "Mobile"]}
+          link="/work/spring"
+        />
+        <ProjectCard
           project="turtlup"
           title="TurtlUp"
           description="Posture-sensing wearable with real-time feedback"
           tags={["Development", "Hardware", "Web"]}
           link="/work/turtlup"
-        />
-        <ProjectCard
-          project="spring"
-          title="Spring"
-          description="Springtime Picnic Festival"
-          tags={["Design Systems", "UI/UX", "Mobile"]}
-          link="/work/spring"
         />
         <ProjectCard
           project="hcde351"
@@ -148,36 +186,7 @@ function Home() {
       </section>
 
       {/* Contact Section */}
-      <section className="contact-section" id="contact">
-        <div className="contact-grid">
-          <div className="contact-title-container">
-            <h2>Contact</h2>
-          </div>
-
-          <div className="contact-table">
-            <div className="contact-row">
-              <div className="contact-label">Email</div>
-              <a href="mailto:rtang0723@gmail.com" className="contact-link">rtang0723@gmail.com</a>
-              <div className="contact-arrow"></div>
-              <div className="contact-line"></div>
-            </div>
-
-            <div className="contact-row">
-              <div className="contact-label">LinkedIn</div>
-              <a href="https://www.linkedin.com/in/sophia-tang-5a087b256/" className="contact-link">ruisophiatang</a>
-              <div className="contact-arrow"></div>
-              <div className="contact-line"></div>
-            </div>
-
-            <div className="contact-row">
-              <div className="contact-label">Github</div>
-              <a href="https://github.com/srtang23" className="contact-link">srtang23</a>
-              <div className="contact-arrow"></div>
-              <div className="contact-line"></div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <ContactSection />
     </>
   )
 }

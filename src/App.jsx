@@ -8,6 +8,7 @@ import Spring from './pages/work/Spring'
 import Sprout from './pages/work/Sprout'
 import TurtlUp from './pages/work/TurtlUp'
 import HCDE351 from './pages/work/HCDE351'
+import Portfolio from './pages/work/Portfolio'
 
 // Handle GitHub Pages 404 redirect - check synchronously before render
 function useGitHubPagesRedirect() {
@@ -46,6 +47,7 @@ function App() {
         <Route path="/work/sprout" element={<Layout><Sprout /></Layout>} />
         <Route path="/work/turtlup" element={<Layout><TurtlUp /></Layout>} />
         <Route path="/work/hcde351" element={<Layout><HCDE351 /></Layout>} />
+        <Route path="/work/portfolio" element={<Layout><Portfolio /></Layout>} />
         {/* Catch-all route for unmatched paths */}
         <Route path="*" element={<Layout><div style={{padding: '20px'}}>404 - Page not found</div></Layout>} />
       </Routes>

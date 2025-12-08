@@ -587,7 +587,7 @@ body:has(.project-section) .hero-description {
 
 .project-card.turtlup {
     background:
-        url('/img/turtlup/posture_stats.GIF') center/75% no-repeat,
+        url('/img/turtlup/posture_stats.GIF') center/90% no-repeat,
         linear-gradient(135deg, #f5f7fa 0%, #e8f4f8 100%);
 }
 
@@ -608,6 +608,14 @@ body:has(.project-section) .hero-description {
         radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
         radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
     opacity: 0.6;
+}
+
+.project-card.portfolio {
+    background:
+        url('/img/portfolio/portfolio_mockup.GIF') center/90% no-repeat,
+        linear-gradient(135deg, #fef9f3 0%, #fff5eb 50%, #fef3e7 100%);
+    position: relative;
+    overflow: hidden;
 }
 
 .project-info {
@@ -671,7 +679,7 @@ body:has(.project-section) .hero-description {
     align-items: flex-start;
     justify-content: flex-start;
     gap: 40px;
-    padding: 160px 112px 80px;
+    padding: 120px 112px 80px;
     width: 100%;
 }
 
@@ -726,6 +734,7 @@ body:has(.project-section) .hero-description {
     display: flex;
     flex-direction: column;
     gap: 32px;
+    margin-top: -60px;
 }
 
 .about-description {
@@ -765,6 +774,38 @@ body:has(.project-section) .hero-description {
 
 .about-text p:last-child {
     margin-bottom: 0;
+}
+
+/* About page animations */
+.about-title:not(.visible),
+.profile-image:not(.visible),
+.about-description:not(.visible),
+.about-text:not(.visible) {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.about-title.visible,
+.profile-image.visible,
+.about-description.visible,
+.about-text.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Contact section animations */
+.contact-title-container:not(.visible),
+.contact-row:not(.visible) {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.contact-title-container.visible,
+.contact-row.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 /* Flip Card */
@@ -2906,4 +2947,70 @@ body:has(.project-section) .hero-description {
 
 .hover-shadow:hover {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/* Portfolio Cards */
+.portfolio-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin: 32px 0;
+}
+
+.portfolio-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+    border-left: 4px solid var(--black);
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+.portfolio-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+}
+
+.portfolio-card h4 {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--black);
+    margin: 0;
+}
+
+.portfolio-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.portfolio-card li {
+    font-family: 'Satoshi', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--black);
+    position: relative;
+    padding-left: 24px;
+}
+
+.portfolio-card li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--black);
+    font-weight: 700;
+    font-size: 20px;
+}
+
+@media (max-width: 768px) {
+    .portfolio-cards {
+        grid-template-columns: 1fr;
+    }
 }
