@@ -38,17 +38,48 @@ The built files will be in the `dist/` folder.
 ```
 src/
 ├── components/     # Reusable React components
+│   ├── Header.jsx
+│   ├── Footer.jsx
+│   ├── Layout.jsx
+│   ├── ProjectCard.jsx
+│   ├── ContactSection.jsx
+│   ├── MoreProjects.jsx
+│   ├── TableOfContents.jsx
+│   ├── Slideshow.jsx
+│   ├── ArtifactModal.jsx
+│   └── FlipCard.jsx
 ├── pages/          # Page components
+│   ├── Home.jsx
+│   ├── About.jsx
 │   └── work/       # Project pages
+│       ├── Spring.jsx
+│       ├── Sprout.jsx
+│       ├── TurtlUp.jsx
+│       └── HCDE351.jsx
 ├── hooks/          # Custom React hooks
+│   ├── useSpringButton.js
+│   ├── useSpringInput.js
+│   └── usePrototypeSlider.js
 ├── App.jsx         # Main app component with routing
 ├── main.jsx        # Entry point
 └── style.css       # All your existing styles
+
+public/
+└── img/            # All images (served at /img/)
 ```
+
+## Key Features
+
+- **React Router**: Client-side routing for clean URLs
+- **Component-based**: Reusable components for maintainability
+- **Custom Hooks**: Interactive features converted to React hooks
+- **Preserved Styling**: All original CSS maintained in `src/style.css`
+- **Same Functionality**: All interactive features work exactly as before
 
 ## Notes
 
 - All your existing CSS is preserved in `src/style.css`
-- Images are in `public/img/`
+- Images are in `public/img/` and referenced as `/img/...`
 - The site looks and functions exactly the same as before, but now uses React
+- Original HTML files have been removed (converted to React components)
 
