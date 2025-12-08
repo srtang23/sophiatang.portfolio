@@ -28,6 +28,13 @@ function RedirectHandler() {
 }
 
 function App() {
+  const location = useLocation()
+
+  // Debug: Log current route on mount and route changes
+  useEffect(() => {
+    console.log('Current route:', location.pathname)
+  }, [location.pathname])
+
   return (
     <>
       <ScrollToTop />
@@ -39,6 +46,8 @@ function App() {
         <Route path="/work/sprout" element={<Layout><Sprout /></Layout>} />
         <Route path="/work/turtlup" element={<Layout><TurtlUp /></Layout>} />
         <Route path="/work/hcde351" element={<Layout><HCDE351 /></Layout>} />
+        {/* Catch-all route - should not be needed but helps debug */}
+        <Route path="*" element={<Layout><div style={{padding: '20px'}}>404 - Page not found. Current path: {location.pathname}</div></Layout>} />
       </Routes>
     </>
   )
