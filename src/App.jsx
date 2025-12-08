@@ -1,4 +1,5 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
 import Layout from './components/Layout'
 import Home from './pages/Home'
 import About from './pages/About'
@@ -7,16 +8,37 @@ import Sprout from './pages/work/Sprout'
 import TurtlUp from './pages/work/TurtlUp'
 import HCDE351 from './pages/work/HCDE351'
 
+// Handle GitHub Pages 404 redirect
+function RedirectHandler() {
+  const location = useLocation()
+
+  useEffect(() => {
+    // Check if we're in a GitHub Pages 404 redirect scenario
+    const query = new URLSearchParams(location.search)
+    const redirectPath = query.get('/')
+    if (redirectPath) {
+      // Clean up the URL
+      const cleanPath = redirectPath.replace(/~and~/g, '&')
+      window.history.replaceState({}, '', cleanPath)
+    }
+  }, [location])
+
+  return null
+}
+
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Layout><Home /></Layout>} />
-      <Route path="/about" element={<Layout><About /></Layout>} />
-      <Route path="/work/spring" element={<Layout><Spring /></Layout>} />
-      <Route path="/work/sprout" element={<Layout><Sprout /></Layout>} />
-      <Route path="/work/turtlup" element={<Layout><TurtlUp /></Layout>} />
-      <Route path="/work/hcde351" element={<Layout><HCDE351 /></Layout>} />
-    </Routes>
+    <>
+      <RedirectHandler />
+      <Routes>
+        <Route path="/" element={<Layout><Home /></Layout>} />
+        <Route path="/about" element={<Layout><About /></Layout>} />
+        <Route path="/work/spring" element={<Layout><Spring /></Layout>} />
+        <Route path="/work/sprout" element={<Layout><Sprout /></Layout>} />
+        <Route path="/work/turtlup" element={<Layout><TurtlUp /></Layout>} />
+        <Route path="/work/hcde351" element={<Layout><HCDE351 /></Layout>} />
+      </Routes>
+    </>
   )
 }
 
