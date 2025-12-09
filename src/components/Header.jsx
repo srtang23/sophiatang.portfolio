@@ -25,7 +25,7 @@ function Header() {
               <div className="nav-links">
                 <Link to="/#work" className="nav-link" onClick={handleWorkClick}>Work</Link>
                 <Link to="/about" className="nav-link">About</Link>
-                <a href="https://drive.google.com/file/d/1MJOwPm9KKXslkeSNqUHgMgXlA4uzzsCZ/view?usp=sharing" className="nav-link external-link" target="_blank" rel="noopener noreferrer">Resume</a>
+                <a href="https://drive.google.com/file/d/1KOTi0_8JAcTXGLdXeSWmpH5-4IxACoI0/view?usp=sharing" className="nav-link external-link" target="_blank" rel="noopener noreferrer">Resume</a>
               </div>
             </div>
           </div>
