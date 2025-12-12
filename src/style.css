@@ -199,6 +199,12 @@ h2 {
     width: 100%;
 }
 
+/* Home page hero section - full viewport height */
+.hero-section:has(.scroll-indicator) {
+    min-height: 100vh;
+    justify-content: center;
+}
+
 /* Index page hero animations */
 .hero-section .hero-title:not(.visible),
 .hero-section .hero-description:not(.visible),

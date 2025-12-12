@@ -52,6 +52,19 @@ function Home() {
         behavior: 'smooth',
         block: 'start'
       })
+
+      // After scrolling, check and reveal cards that are already in view
+      setTimeout(() => {
+        const projectCards = document.querySelectorAll('.project-card-wrapper')
+        projectCards.forEach((card) => {
+          const rect = card.getBoundingClientRect()
+          const viewportHeight = window.innerHeight
+          // If card is in viewport, make it visible
+          if (rect.top < viewportHeight && rect.bottom > 0) {
+            card.classList.add('visible')
+          }
+        })
+      }, 800) // Wait for smooth scroll to complete
     }
   }
 
@@ -98,14 +111,13 @@ function Home() {
         // Only animate when scrolling down and element is entering from below
         const rect = entry.boundingClientRect
         const viewportHeight = window.innerHeight
-        const isBelowViewport = rect.top > viewportHeight
         const isEnteringFromBelow = rect.top > 0 && rect.top < viewportHeight
 
-        // Only animate if:
-        // 1. We're scrolling down
-        // 2. The card is intersecting
+        // Animate if:
+        // 1. The card is intersecting
+        // 2. Either we're scrolling down OR the card is already in view (for programmatic scrolls)
         // 3. The card's top is in the viewport (entering from below, not already above)
-        if (entry.isIntersecting && scrollDirection === 'down' && isEnteringFromBelow) {
+        if (entry.isIntersecting && (scrollDirection === 'down' || rect.top < viewportHeight) && isEnteringFromBelow) {
           entry.target.classList.add('visible')
           cardObserver.unobserve(entry.target)
         }
@@ -113,9 +125,15 @@ function Home() {
     }, observerOptions)
 
     projectCards.forEach((card, index) => {
-      // Only observe cards that are initially below the viewport
       const rect = card.getBoundingClientRect()
-      if (rect.top > window.innerHeight) {
+      const viewportHeight = window.innerHeight
+
+      // If card is already in viewport, make it visible immediately
+      if (rect.top < viewportHeight && rect.bottom > 0) {
+        card.style.transitionDelay = `${index * 0.15}s`
+        card.classList.add('visible')
+      } else {
+        // Otherwise, observe it for scroll-triggered animation
         card.style.transitionDelay = `${index * 0.15}s`
         cardObserver.observe(card)
       }
