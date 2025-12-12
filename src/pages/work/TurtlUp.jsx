@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react'
 import TableOfContents from '../../components/TableOfContents'
 import FlipCard from '../../components/FlipCard'
 import MoreProjects from '../../components/MoreProjects'
-import ContactSection from '../../components/ContactSection'
 import { usePrototypeSlider } from '../../hooks/usePrototypeSlider'
 import { useScrollReveal } from '../../hooks/useScrollReveal'
 
@@ -58,22 +57,6 @@ function TurtlUp() {
     }
   }, [])
 
-  const moreProjects = [
-    {
-      class: 'sprout',
-      title: 'Sprout',
-      description: 'A design system for sustainable living',
-      tags: ['Visual Design System', 'Mobile App Design'],
-      link: '/work/sprout'
-    },
-    {
-      class: 'spring',
-      title: 'Spring',
-      description: 'Springtime Picnic Festival',
-      tags: ['Design Systems', 'UI/UX', 'Mobile'],
-      link: '/work/spring'
-    }
-  ]
 
   return (
     <>
@@ -393,8 +376,7 @@ function TurtlUp() {
         </div>
       </section>
 
-      <MoreProjects projects={moreProjects} />
-      <ContactSection />
+      <MoreProjects />
     </>
   )
 }

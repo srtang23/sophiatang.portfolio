@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import TableOfContents from '../../components/TableOfContents'
 import MoreProjects from '../../components/MoreProjects'
-import ContactSection from '../../components/ContactSection'
+import OutsideLinkButton from '../../components/OutsideLinkButton'
 import { useScrollReveal } from '../../hooks/useScrollReveal'
 
 function Portfolio() {
@@ -13,23 +13,6 @@ function Portfolio() {
       document.body.className = ''
     }
   }, [])
-
-  const moreProjects = [
-    {
-      class: 'sprout',
-      title: 'Sprout',
-      description: 'A design system for sustainable living',
-      tags: ['Design System', 'UI/UX', 'Mobile'],
-      link: '/work/sprout'
-    },
-    {
-      class: 'turtlup',
-      title: 'TurtlUp',
-      description: 'Posture-sensing wearable with real-time feedback',
-      tags: ['Development', 'Hardware', 'Web'],
-      link: '/work/turtlup'
-    }
-  ]
 
   return (
     <>
@@ -72,14 +55,9 @@ function Portfolio() {
                   any questions or suggestions, I'd love to hear from you!
                 </p>
                 <p>
-                  <a
-                    href="https://github.com/srtang23/sophiatang.portfolio"
-                    className="case-study-button"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <OutsideLinkButton href="https://github.com/srtang23/sophiatang.portfolio">
                     View on GitHub
-                  </a>
+                  </OutsideLinkButton>
                 </p>
               </div>
             </div>
@@ -120,8 +98,7 @@ function Portfolio() {
         </div>
       </section>
 
-      <MoreProjects projects={moreProjects} />
-      <ContactSection />
+      <MoreProjects />
     </>
   )
 }

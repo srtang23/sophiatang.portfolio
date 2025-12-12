@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import ProjectCard from '../components/ProjectCard'
-import ContactSection from '../components/ContactSection'
+import OutsideLinkButton from '../components/OutsideLinkButton'
 
 function Home() {
   useEffect(() => {
@@ -72,7 +72,7 @@ function Home() {
     // Scroll reveal for hero section elements
     const heroTitle = document.querySelector('.hero-title')
     const heroDescription = document.querySelector('.hero-description')
-    const linkedinButton = document.querySelector('.linkedin-button')
+    const linkedinButton = document.querySelector('.outside-link-button')
     const scrollIndicator = document.querySelector('.scroll-indicator')
 
     if (heroTitle) {
@@ -155,11 +155,9 @@ function Home() {
           <br />
           <p>I'm a UX & Product Designer with engineering mindset, bridging design and development.</p>
         </div>
-        <a href="https://www.linkedin.com/in/sophia-tang-5a087b256/" className="linkedin-button">
-          <div className="linkedin-button-text">
-            <p>Get in touch</p>
-          </div>
-        </a>
+        <OutsideLinkButton href="https://www.linkedin.com/in/sophia-tang-5a087b256/">
+          Get in touch
+        </OutsideLinkButton>
         <div className="scroll-indicator" onClick={scrollToProjects}></div>
       </section>
 
@@ -202,9 +200,6 @@ function Home() {
           external={true}
         />
       </section>
-
-      {/* Contact Section */}
-      <ContactSection />
     </>
   )
 }

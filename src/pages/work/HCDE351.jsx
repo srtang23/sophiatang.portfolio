@@ -1,5 +1,5 @@
 import TableOfContents from '../../components/TableOfContents'
-import ContactSection from '../../components/ContactSection'
+import MoreProjects from '../../components/MoreProjects'
 import { useScrollReveal } from '../../hooks/useScrollReveal'
 
 function HCDE351() {
@@ -47,7 +47,7 @@ function HCDE351() {
         </div>
       </section>
 
-      <ContactSection />
+      <MoreProjects />
     </>
   )
 }

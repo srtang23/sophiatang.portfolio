@@ -1,7 +1,22 @@
+import { useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 
 function Header() {
   const location = useLocation()
+
+  useEffect(() => {
+    // Animate header elements on mount
+    const logo = document.querySelector('.logo-wrapper .nav-link')
+    const navLinks = document.querySelectorAll('.nav-links .nav-link')
+
+    if (logo) {
+      setTimeout(() => logo.classList.add('visible'), 100)
+    }
+
+    navLinks.forEach((link, index) => {
+      setTimeout(() => link.classList.add('visible'), 200 + (index * 100))
+    })
+  }, [])
 
   const handleWorkClick = (e) => {
     if (location.pathname === '/') {
@@ -29,7 +44,6 @@ function Header() {
               </div>
             </div>
           </div>
-          <div className="nav-line"></div>
         </nav>
       </div>
     </div>

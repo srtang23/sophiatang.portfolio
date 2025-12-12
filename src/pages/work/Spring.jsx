@@ -3,7 +3,7 @@ import TableOfContents from '../../components/TableOfContents'
 import Slideshow from '../../components/Slideshow'
 import ArtifactModal from '../../components/ArtifactModal'
 import MoreProjects from '../../components/MoreProjects'
-import ContactSection from '../../components/ContactSection'
+import OutsideLinkButton from '../../components/OutsideLinkButton'
 import { useSpringButton } from '../../hooks/useSpringButton'
 import { useSpringInput } from '../../hooks/useSpringInput'
 import { useScrollReveal } from '../../hooks/useScrollReveal'
@@ -127,22 +127,6 @@ function Spring() {
     setModalOpen(true)
   }
 
-  const moreProjects = [
-    {
-      class: 'sprout',
-      title: 'Sprout',
-      description: 'A design system for sustainable living',
-      tags: ['Visual Design System', 'Mobile App Design'],
-      link: '/work/sprout'
-    },
-    {
-      class: 'turtlup',
-      title: 'TurtlUp',
-      description: 'Posture-sensing wearable with real-time feedback',
-      tags: ['Development', 'Hardware', 'Web'],
-      link: '/work/turtlup'
-    }
-  ]
 
   return (
     <>
@@ -155,7 +139,9 @@ function Spring() {
             <div>
               <h2>Role</h2>
               <p>UI/UX Designer</p>
-              <a href="https://drive.google.com/file/d/1ARHUGwo_LTeJtLdI5qIjPhczndscK_gR/view?usp=sharing" className="case-study-button" target="_blank" rel="noopener">View Case Study</a>
+              <OutsideLinkButton href="https://drive.google.com/file/d/1ARHUGwo_LTeJtLdI5qIjPhczndscK_gR/view?usp=sharing">
+                View Case Study
+              </OutsideLinkButton>
             </div>
             <div>
               <h2>Expertise</h2>
@@ -335,7 +321,7 @@ function Spring() {
                                 onBlur={input.handleBlur}
                               />
                               {input.hasError && (
-                                <span className="input-error-msg" style={{ color: '#F59779', fontSize: '12px', fontFamily: "'Satoshi', sans-serif", paddingLeft: '24px', marginTop: '2px' }}>
+                                <span className="input-error-msg" style={{ color: '#F59779', fontSize: '12px', fontFamily: "'Montserrat', sans-serif", paddingLeft: '24px', marginTop: '2px' }}>
                                   {input.errorMessage}
                                 </span>
                               )}
@@ -451,8 +437,7 @@ function Spring() {
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
       />
-      <MoreProjects projects={moreProjects} />
-      <ContactSection />
+      <MoreProjects />
     </>
   )
 }

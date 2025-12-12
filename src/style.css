@@ -17,13 +17,18 @@
 html, body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 body {
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background-color: var(--white);
     color: var(--black);
     font-size: 18px;
+    overflow-x: hidden;
+    width: 100%;
+    padding-bottom: 70px;
 }
 
 /* Typography */
@@ -45,7 +50,7 @@ h3 {
 }
 
 h4 {
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 18px;
     font-weight: 600;
     color: var(--black);
@@ -55,7 +60,7 @@ h4 {
 }
 
 h2 {
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     font-weight: 500;
     color: var(--medium-gray);
@@ -68,23 +73,34 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 1200px;
+    max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
+    padding: 0;
 }
 
 /* Header */
 .header-container {
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 10000;
     background-color: var(--white);
+    min-height: 80px;
+    width: 100%;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .header {
-    width: 1200px;
+    max-width: 1200px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 0 auto;
+    padding: 0 7.5%;
 }
 
 .nav {
@@ -92,9 +108,9 @@ h2 {
     align-items: center;
     justify-content: center;
     height: 80px;
-    padding: 0 60px;
     position: relative;
-    width: 1200px;
+    max-width: 1200px;
+    width: 100%;
 }
 
 .nav-wrapper {
@@ -108,20 +124,6 @@ h2 {
     position: relative;
 }
 
-.nav-line {
-    position: absolute;
-    bottom: -13px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: var(--black);
-    z-index: 1;
-}
-
-/* When header is sticky, keep the line flush with the bottom to avoid visual gap */
-.header-container.is-sticky .nav-line {
-    bottom: 0;
-}
 
 .nav-content {
     display: flex;
@@ -139,6 +141,16 @@ h2 {
     flex: 1;
 }
 
+.logo-wrapper .nav-link {
+    color: #5c7af2;
+    font-size: 24px;
+}
+
+.logo-wrapper .nav-link:hover {
+    color: #5c7af2;
+    font-style: italic;
+}
+
 .nav-links {
     display: flex;
     flex-direction: row;
@@ -150,16 +162,25 @@ h2 {
 .nav-link {
     color: var(--black);
     text-decoration: none;
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 700;
     letter-spacing: -0.8px;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out, color 0.3s ease, font-style 0.3s ease;
     cursor: pointer;
+    opacity: 0;
+    transform: translateY(-10px);
+    font-style: normal;
+}
+
+.nav-link.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .nav-link:hover {
-    opacity: 0.7;
+    color: #5c7af2;
+    font-style: italic;
 }
 
 /* External Link Arrow */
@@ -195,8 +216,11 @@ h2 {
     align-items: flex-start;
     justify-content: flex-start;
     gap: 20px;
-    padding: 160px 112px 40px;
+    padding: 160px 7.5% 40px;
+    padding-top: calc(82px + 80px); /* Header height + top padding */
     width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 /* Home page hero section - full viewport height */
@@ -208,7 +232,7 @@ h2 {
 /* Index page hero animations */
 .hero-section .hero-title:not(.visible),
 .hero-section .hero-description:not(.visible),
-.hero-section .linkedin-button:not(.visible),
+.hero-section .outside-link-button:not(.visible),
 .hero-section .scroll-indicator:not(.visible) {
     opacity: 0;
     transform: translateY(30px);
@@ -216,11 +240,15 @@ h2 {
 
 .hero-section .hero-title.visible,
 .hero-section .hero-description.visible,
-.hero-section .linkedin-button.visible,
+.hero-section .outside-link-button.visible,
 .hero-section .scroll-indicator.visible {
     opacity: 1;
     transform: translateY(0);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.hero-section .outside-link-button.visible:hover {
+    transition: all 0.2s ease;
 }
 
 /* Hero animations */
@@ -272,13 +300,16 @@ body:has(.project-section) .hero-description {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    width: 976px;
+    max-width: 976px;
+    width: 100%;
 }
 
 .hero-mockup-img {
     width: 100%;
     max-width: 100%;
+    height: auto;
     margin-top: 20px;
+    display: block;
 }
 
 .hero-description p {
@@ -297,7 +328,7 @@ body:has(.project-section) .hero-description {
 
 /* First h2 in hero-section (TURTLUP tag) - same styling but no numbering */
 .hero-section > h2:first-child {
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 0.16em;
@@ -307,7 +338,7 @@ body:has(.project-section) .hero-description {
 }
 
 .hero-section h2:not(.hero-info h2):not(:first-child) {
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     font-weight: 700; /* Bold */
     letter-spacing: 0.16em;
@@ -324,7 +355,7 @@ body:has(.project-section) .hero-description {
     position: absolute;
     left: 0;
     color: #006ED3;
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 0.16em;
@@ -342,7 +373,7 @@ body:has(.project-section) .hero-description {
 }
 
 .hero-info h2 {
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 0.16em;
@@ -373,7 +404,7 @@ body:has(.project-section) .hero-description {
 }
 
 .hero-info > div p {
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 24px;
     font-weight: 500;
     letter-spacing: -0.4px;
@@ -415,6 +446,44 @@ body:has(.project-section) .hero-description {
 }
 
 .case-study-button:hover::after {
+    transform: rotate(45deg);
+}
+
+/* Outside Link Button */
+.outside-link-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 25px;
+    background-color: var(--black);
+    color: var(--white);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 5px 5px #abaaaa;
+    transition: all 0.2s ease;
+    margin-top: 10px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.outside-link-button::after {
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='M4 12L12 4M12 4H7M12 4V9' stroke='%23fff' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    width: 16px;
+    height: 16px;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: inline-block;
+}
+
+.outside-link-button:hover,
+.outside-link-button.visible:hover {
+    background-color: #333;
+    transform: translate(2px, 2px);
+    box-shadow: 3px 3px #abaaaa;
+}
+
+.outside-link-button:hover::after {
     transform: rotate(45deg);
 }
 
@@ -544,7 +613,9 @@ body:has(.project-section) .hero-description {
     grid-template-columns: repeat(2, 1fr);
     gap: 36px;
     width: 100%;
-    padding: 125px 112px 160px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 125px 7.5% 160px;
 }
 
 .project-card-wrapper {
@@ -654,7 +725,7 @@ body:has(.project-section) .hero-description {
 }
 
 .project-tag {
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 12px;
     font-weight: 500;
     color: rgba(0, 0, 0, 0.7);
@@ -671,7 +742,7 @@ body:has(.project-section) .hero-description {
 }
 
 .project-description {
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     font-weight: 400;
     color: rgba(0, 0, 0, 0.7);
@@ -685,8 +756,10 @@ body:has(.project-section) .hero-description {
     align-items: flex-start;
     justify-content: flex-start;
     gap: 40px;
-    padding: 120px 112px 80px;
+    padding: 120px 7.5% 80px;
+    max-width: 1200px;
     width: 100%;
+    margin: 0 auto;
 }
 
 .about-content {
@@ -770,7 +843,7 @@ body:has(.project-section) .hero-description {
 }
 
 .about-text p {
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 18px;
     font-weight: 400;
     line-height: 1.6;
@@ -901,7 +974,7 @@ body:has(.project-section) .hero-description {
 }
 
 .flip-card .flip-card-front h3 {
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 24px;
     font-weight: 500;
     line-height: 1.4;
@@ -912,7 +985,7 @@ body:has(.project-section) .hero-description {
 }
 
 .flip-card .flip-card-back h3 {
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 24px;
     font-weight: 500;
     line-height: 1.5;
@@ -923,7 +996,7 @@ body:has(.project-section) .hero-description {
 }
 
 .flip-hint {
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     font-weight: 400;
     color: rgba(0, 0, 0, 0.5);
@@ -937,9 +1010,10 @@ body:has(.project-section) .hero-description {
     align-items: flex-start;
     justify-content: flex-start;
     gap: 40px;
-    padding: 40px 112px 0;
+    padding: 40px 7.5% 0;
+    max-width: 1200px;
     width: 100%;
-    margin-bottom: 64px;
+    margin: 0 auto 64px;
 }
 
 /* Scroll reveal animation */
@@ -956,7 +1030,7 @@ body:has(.project-section) .hero-description {
 
 
 .project-section h2 {
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 0.16em;
@@ -974,7 +1048,7 @@ body:has(.project-section) .hero-description {
     position: absolute;
     left: 0;
     color: #006ED3;
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 0.16em;
@@ -1013,7 +1087,7 @@ body:has(.project-section) .hero-description {
 }
 
 .project-text p {
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 18px;
     font-weight: 400;
     line-height: 1.6;
@@ -1115,7 +1189,7 @@ body:has(.project-section) .hero-description {
 }
 
 .subsection-content p {
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 18px;
     font-weight: 400;
     line-height: 1.6;
@@ -1239,7 +1313,7 @@ body:has(.project-section) .hero-description {
 }
 
 .state-label {
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     font-weight: 500;
     color: var(--black);
@@ -1248,7 +1322,7 @@ body:has(.project-section) .hero-description {
 
 .spring-btn {
     padding: 0 24px;
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     font-weight: 500;
     cursor: pointer;
@@ -1350,7 +1424,7 @@ body:has(.project-section) .hero-description {
     width: 401.63px;
     height: 43.6px;
     padding: 0 24px; /* Match button horizontal padding */
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     color: #45281D;
     background-color: #FFF0D8; /* Static fill */
@@ -1439,7 +1513,7 @@ body:has(.project-section) .hero-description {
 }
 
 .contrast-value {
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     font-weight: 500;
 }
@@ -1496,7 +1570,7 @@ body:has(.project-section) .hero-description {
 }
 
 .focus-areas li {
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 18px;
     font-weight: 400;
     line-height: 1.6;
@@ -1549,7 +1623,7 @@ body:has(.project-section) .hero-description {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .revenue-table thead {
@@ -1619,7 +1693,7 @@ body:has(.project-section) .hero-description {
 }
 
 .focus-card p {
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     font-weight: 500;
     line-height: 1.5;
@@ -1662,7 +1736,7 @@ body:has(.project-section) .hero-description {
 }
 
 .takeaway-card p {
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     font-weight: 400;
     line-height: 1.6;
@@ -1750,7 +1824,7 @@ body:has(.project-section) .hero-description {
 }
 
 .persona-age {
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 13px;
     font-weight: 500;
     color: #6b7280;
@@ -1763,7 +1837,7 @@ body:has(.project-section) .hero-description {
 }
 
 .persona-description {
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 13px;
     line-height: 1.5;
     color: #4a5568;
@@ -1828,7 +1902,7 @@ body:has(.project-section) .hero-description {
 }
 
 .insight-quote {
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 18px;
     font-weight: 400;
     line-height: 1.6;
@@ -1840,7 +1914,7 @@ body:has(.project-section) .hero-description {
 }
 
 .insight-takeaway {
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 17px;
     font-weight: 500;
     line-height: 1.6;
@@ -1853,7 +1927,7 @@ body:has(.project-section) .hero-description {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .spa-table thead {
@@ -2023,7 +2097,7 @@ body:has(.project-section) .hero-description {
 }
 
 .prototype-card-content h3 {
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 0.16em;
@@ -2034,7 +2108,7 @@ body:has(.project-section) .hero-description {
 }
 
 .prototype-card-content p {
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     font-weight: 400;
     line-height: 1.6;
@@ -2160,7 +2234,7 @@ body:has(.project-section) .hero-description {
 }
 
 .prototype-content h3 {
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 0.16em;
@@ -2171,7 +2245,7 @@ body:has(.project-section) .hero-description {
 }
 
 .prototype-content p {
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     font-weight: 400;
     line-height: 1.6;
@@ -2361,7 +2435,7 @@ body:has(.project-section) .hero-description {
 }
 
 .table-of-contents a {
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 13px;
     font-weight: 400;
     color: rgba(0, 0, 0, 0.65);
@@ -2426,12 +2500,14 @@ body:has(.project-section) .hero-description {
 
 /* Next Up Section */
 .more-projects-section {
-    padding: 80px 112px 60px;
+    padding: 80px 7.5% 60px;
     width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .more-projects-section h2 {
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 32px;
     font-weight: 700;
     color: var(--black);
@@ -2443,13 +2519,37 @@ body:has(.project-section) .hero-description {
     max-width: 1000px;
     margin: 0 auto;
     width: 100%;
+    padding: 0;
 }
 
-.more-projects-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+.more-projects-slider-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.more-projects-slider {
+    display: flex;
     gap: 24px;
-    margin: 0;
+    overflow: visible;
+    width: fit-content;
+    flex-wrap: nowrap;
+    animation: scroll var(--animation-duration, 30s) linear infinite;
+    --scroll-width: 0px;
+    --animation-duration: 30s;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-1 * var(--scroll-width)));
+    }
+}
+
+.more-projects-slider:hover {
+    animation-play-state: paused;
 }
 
 .more-project-wrapper {
@@ -2458,6 +2558,8 @@ body:has(.project-section) .hero-description {
     gap: 16px;
     text-decoration: none;
     transition: transform 0.3s ease;
+    flex-shrink: 0;
+    width: 480px; /* Fixed width for each project card in slider */
 }
 
 .more-project-wrapper:hover {
@@ -2490,7 +2592,32 @@ body:has(.project-section) .hero-description {
     background: url('/img/spring/spring_mockup.png') center/cover no-repeat;
 }
 
-/* Duplicate removed */
+.more-project-card.portfolio {
+    background:
+        url('/img/portfolio/portfolio_mockup.GIF') center/90% no-repeat,
+        linear-gradient(135deg, #fef9f3 0%, #fff5eb 50%, #fef3e7 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.more-project-card.hcde351 {
+    background: linear-gradient(135deg, #e8e2f5 0%, #d4c5f0 50%, #c0a8eb 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.more-project-card.hcde351::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
+    opacity: 0.6;
+}
 
 .more-project-info {
     display: flex;
@@ -2522,7 +2649,7 @@ body:has(.project-section) .hero-description {
 }
 
 .more-project-tag {
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 12px;
     font-weight: 500;
     color: rgba(0, 0, 0, 0.7);
@@ -2533,7 +2660,7 @@ body:has(.project-section) .hero-description {
 }
 
 .more-project-description {
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     font-weight: 400;
     color: rgba(0, 0, 0, 0.7);
@@ -2545,8 +2672,12 @@ body:has(.project-section) .hero-description {
         padding: 60px 32px 40px;
     }
 
-    .more-projects-grid {
-        grid-template-columns: 1fr;
+    .more-project-wrapper {
+        width: 320px;
+    }
+
+    .more-projects-slider {
+        animation-duration: 25s;
     }
 }
 
@@ -2557,8 +2688,10 @@ body:has(.project-section) .hero-description {
     align-items: center;
     justify-content: center;
     gap: 64px;
-    padding: 160px 112px;
-    width: 1200px;
+    padding: 160px 7.5%;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .contact-grid {
@@ -2667,118 +2800,153 @@ body:has(.project-section) .hero-description {
     z-index: 1;
 }
 
-/* Footer */
-.footer-line {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 2px;
-    width: 90%;
-    background-color: var(--black);
-}
-
-.footer-line-content {
-    height: 2px;
-    width: 100%;
-}
-
+/* Sticky Footer */
 .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 160px 112px;
-    width: 1200px;
+    padding: 16px 7.5%;
+    background-color: var(--white);
+    border-top: 1px solid transparent;
+    z-index: 9999;
+    gap: 12px;
+    flex-wrap: wrap;
+    box-shadow: none;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.footer-logo {
-    font-family: 'Satoshi', sans-serif;
-    font-size: 18px;
+.footer.scrolled {
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.footer-link {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
     font-weight: 500;
-    letter-spacing: -0.8px;
     color: var(--black);
+    text-decoration: none;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out, color 0.3s ease;
+    white-space: nowrap;
+    text-align: center;
+    min-width: 0;
+    opacity: 0;
+    transform: translateY(10px);
 }
 
-.copyright {
-    font-family: 'Satoshi', sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    letter-spacing: -0.8px;
+.footer-link.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.footer-link:hover {
+    color: #5c7af2;
+}
+
+.footer-center-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
     color: var(--medium-gray);
+    transition: color 0.3s ease;
+}
+
+.footer-center-text.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.footer-center-text:hover {
+    color: #5c7af2;
 }
 
 /* Responsive Design */
-@media (max-width: 1219px) and (min-width: 878px) {
-    .nav-wrapper {
-        max-width: 1059px;
-    }
-}
-
-@media (max-width: 877px) and (min-width: 810px) {
-    .main-container,
-    .header,
-    .nav,
-    .projects-section,
-    .contact-section,
-    .footer-line,
-    .footer {
-        width: 810px;
-    }
-
-    .contact-grid {
-        grid-template-columns: repeat(3, minmax(200px, 1fr));
-    }
-
-    .prototype-nav-btn {
-        width: 40px;
-        height: 40px;
-    }
-
-    .prototype-nav-prev {
-        left: 16px;
-    }
-
-    .prototype-nav-next {
-        right: 16px;
-    }
-}
-
-@media (max-width: 809px) and (min-width: 0px) {
-    .main-container {
-        width: 390px;
-    }
-
-    .nav {
-        padding: 0 80px;
-    }
-
-    .nav-wrapper {
-        flex-direction: column;
-        gap: 16px;
-        padding: 24px 40px;
-    }
-
-    .nav-content {
-        justify-content: space-between;
-        order: 1;
-    }
-
-    .nav-links {
-        order: 2;
-    }
-
-    .hero-title,
-    .hero-description {
-        width: 166px;
+@media (max-width: 1024px) {
+    .hero-section {
+        padding: 120px 7.5% 40px;
+        padding-top: calc(82px + 60px);
     }
 
     .projects-section {
-        gap: 48px;
-        grid-template-columns: 1fr;
+        padding: 100px 7.5% 120px;
+        gap: 32px;
     }
 
-    .contact-grid {
-        gap: 48px;
+    .footer {
+        padding: 14px 7.5%;
+    }
+
+    .more-projects-section {
+        padding: 60px 7.5% 40px;
+    }
+
+    .project-section {
+        padding: 40px 7.5% 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        padding: 0;
+    }
+
+    .header {
+        padding: 0 7.5%;
+    }
+
+    .nav {
+        padding: 0 7.5%;
+    }
+
+    .nav-links {
+        gap: 32px;
+    }
+
+    .hero-section {
+        padding: 100px 7.5% 40px;
+        padding-top: calc(82px + 40px);
+    }
+
+    .hero-title {
+        font-size: 32px;
+    }
+
+    .projects-section {
         grid-template-columns: 1fr;
+        padding: 80px 7.5% 100px;
+        gap: 48px;
+    }
+
+    .footer {
+        padding: 12px 7.5%;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .footer-link {
+        font-size: 12px;
+        flex: 1;
+        min-width: 80px;
+    }
+
+    .footer-center-text {
+        font-size: 12px;
+    }
+
+    .more-projects-section {
+        padding: 60px 7.5% 40px;
+    }
+
+    .project-section {
+        padding: 40px 7.5% 0;
+    }
+
+    .outside-link-button {
+        font-size: 16px;
+        padding: 8px 20px;
     }
 
     .prototype-nav-btn {
@@ -2821,6 +2989,66 @@ body:has(.project-section) .hero-description {
 
     .color-dots {
         flex-direction: row;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section {
+        padding: 80px 7.5% 32px;
+        padding-top: calc(82px + 32px);
+    }
+
+    .hero-title {
+        font-size: 28px;
+    }
+
+    .hero-description {
+        font-size: 16px;
+    }
+
+    .projects-section {
+        padding: 60px 7.5% 80px;
+        gap: 40px;
+    }
+
+    .footer {
+        padding: 10px 7.5%;
+        gap: 6px;
+    }
+
+    .footer-link {
+        font-size: 11px;
+        flex: 1;
+        min-width: 60px;
+    }
+
+    .footer-center-text {
+        font-size: 11px;
+    }
+
+    body {
+        padding-bottom: 60px;
+    }
+
+    .more-projects-section {
+        padding: 40px 7.5% 32px;
+    }
+
+    .nav-links {
+        gap: 24px;
+        flex-wrap: wrap;
+    }
+
+    .nav-link {
+        font-size: 16px;
+    }
+
+    .hero-info {
+        width: 100%;
+    }
+
+    .product-overview-img {
+        max-width: 100%;
     }
 }/* Slideshow container */
 .slideshow-container {
@@ -2998,7 +3226,7 @@ body:has(.project-section) .hero-description {
 }
 
 .portfolio-card li {
-    font-family: 'Satoshi', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     line-height: 1.6;
     color: var(--black);

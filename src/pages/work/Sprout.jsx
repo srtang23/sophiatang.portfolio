@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import TableOfContents from '../../components/TableOfContents'
 import FlipCard from '../../components/FlipCard'
 import MoreProjects from '../../components/MoreProjects'
-import ContactSection from '../../components/ContactSection'
 import { useScrollReveal } from '../../hooks/useScrollReveal'
 
 function Sprout() {
@@ -81,22 +80,6 @@ function Sprout() {
     }
   }, [])
 
-  const moreProjects = [
-    {
-      class: 'spring',
-      title: 'Spring',
-      description: 'Springtime Picnic Festival',
-      tags: ['Design Systems', 'UI/UX', 'Mobile'],
-      link: '/work/spring'
-    },
-    {
-      class: 'turtlup',
-      title: 'TurtlUp',
-      description: 'Posture-sensing wearable with real-time feedback',
-      tags: ['Development', 'Hardware', 'Web'],
-      link: '/work/turtlup'
-    }
-  ]
 
   return (
     <>
@@ -308,8 +291,7 @@ function Sprout() {
         </div>
       </section>
 
-      <MoreProjects projects={moreProjects} />
-      <ContactSection />
+      <MoreProjects />
     </>
   )
 }

@@ -1,5 +1,4 @@
 import { useEffect } from 'react'
-import ContactSection from '../components/ContactSection'
 
 function About() {
   useEffect(() => {
@@ -50,8 +49,6 @@ function About() {
           </div>
         </div>
       </section>
-
-      <ContactSection />
     </>
   )
 }
