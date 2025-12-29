@@ -16,7 +16,7 @@ function TableOfContents() {
       if (heroSection) {
         heroSection.querySelectorAll('h2, h3').forEach(heading => {
           const text = heading.textContent.trim()
-          if (!['TURTLUP', 'SPRING', 'SPROUT', 'HCDE 351', 'ROLE', 'EXPERTISE', 'TEAM', 'YEAR', 'DEMO'].includes(text.toUpperCase())) {
+          if (!['TURTLUP', 'SPRING', 'SPROUT', 'DESIGN PROTOTYPES', 'ROLE', 'EXPERTISE', 'TEAM', 'YEAR', 'DEMO'].includes(text.toUpperCase())) {
             collectedHeadings.push(heading)
           }
         })
@@ -24,7 +24,7 @@ function TableOfContents() {
 
       projectSections.forEach(section => {
         section.querySelectorAll('h2, h3').forEach(heading => {
-          if (!heading.closest('.flip-card')) {
+          if (!heading.closest('.flip-card') && !heading.closest('.sprout-final-card')) {
             collectedHeadings.push(heading)
           }
         })

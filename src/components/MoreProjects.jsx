@@ -66,39 +66,61 @@ function MoreProjects() {
           <div className="more-projects-slider-wrapper">
             <div ref={sliderRef} className="more-projects-slider">
               {/* First set of cards */}
-              {otherProjects.map((project, index) => (
-                <Link key={`first-${project.id}`} to={project.link} className="more-project-wrapper">
-                  <div className={`more-project-card ${project.class}`}></div>
-                  <div className="more-project-info">
-                    <div className="more-project-header">
-                      <h3 className="more-project-title">{project.title}</h3>
-                      <div className="more-project-tags">
-                        {project.tags.map((tag, tagIndex) => (
-                          <span key={tagIndex} className="more-project-tag">{tag}</span>
-                        ))}
+              {otherProjects.map((project, index) => {
+                const cardContent = (
+                  <>
+                    <div className={`more-project-card ${project.class}`}></div>
+                    <div className="more-project-info">
+                      <div className="more-project-header">
+                        <h3 className="more-project-title">{project.title}</h3>
+                        <div className="more-project-tags">
+                          {project.tags.map((tag, tagIndex) => (
+                            <span key={tagIndex} className="more-project-tag">{tag}</span>
+                          ))}
+                        </div>
                       </div>
+                      <p className="more-project-description">{project.description}</p>
                     </div>
-                    <p className="more-project-description">{project.description}</p>
-                  </div>
-                </Link>
-              ))}
+                  </>
+                )
+                return project.external ? (
+                  <a key={`first-${project.id}`} href={project.link} target="_blank" rel="noopener noreferrer" className="more-project-wrapper">
+                    {cardContent}
+                  </a>
+                ) : (
+                  <Link key={`first-${project.id}`} to={project.link} className="more-project-wrapper">
+                    {cardContent}
+                  </Link>
+                )
+              })}
               {/* Duplicate set for seamless loop */}
-              {otherProjects.map((project, index) => (
-                <Link key={`second-${project.id}`} to={project.link} className="more-project-wrapper">
-                  <div className={`more-project-card ${project.class}`}></div>
-                  <div className="more-project-info">
-                    <div className="more-project-header">
-                      <h3 className="more-project-title">{project.title}</h3>
-                      <div className="more-project-tags">
-                        {project.tags.map((tag, tagIndex) => (
-                          <span key={tagIndex} className="more-project-tag">{tag}</span>
-                        ))}
+              {otherProjects.map((project, index) => {
+                const cardContent = (
+                  <>
+                    <div className={`more-project-card ${project.class}`}></div>
+                    <div className="more-project-info">
+                      <div className="more-project-header">
+                        <h3 className="more-project-title">{project.title}</h3>
+                        <div className="more-project-tags">
+                          {project.tags.map((tag, tagIndex) => (
+                            <span key={tagIndex} className="more-project-tag">{tag}</span>
+                          ))}
+                        </div>
                       </div>
+                      <p className="more-project-description">{project.description}</p>
                     </div>
-                    <p className="more-project-description">{project.description}</p>
-                  </div>
-                </Link>
-              ))}
+                  </>
+                )
+                return project.external ? (
+                  <a key={`second-${project.id}`} href={project.link} target="_blank" rel="noopener noreferrer" className="more-project-wrapper">
+                    {cardContent}
+                  </a>
+                ) : (
+                  <Link key={`second-${project.id}`} to={project.link} className="more-project-wrapper">
+                    {cardContent}
+                  </Link>
+                )
+              })}
             </div>
           </div>
         </div>

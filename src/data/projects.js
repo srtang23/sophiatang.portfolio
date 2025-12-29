@@ -4,7 +4,7 @@ export const allProjects = [
     id: 'portfolio',
     class: 'portfolio',
     title: 'This Website!',
-    description: 'A custom-built portfolio website showcasing my work as a UX & Product Designer',
+    description: 'A custom-built portfolio website showcasing my design and development work.',
     tags: ['Development', 'Vibe Coding', 'Web'],
     link: '/work/portfolio'
   },
@@ -12,7 +12,7 @@ export const allProjects = [
     id: 'sprout',
     class: 'sprout',
     title: 'Sprout',
-    description: 'A design system for sustainable living',
+    description: 'A tangible self-care system designed to help students manage anxiety through a mobile app integrated with an optional physical plant companion, making wellness feel supportive rather than overwhelming.',
     tags: ['Design System', 'UI/UX', 'Mobile'],
     link: '/work/sprout'
   },
@@ -20,7 +20,7 @@ export const allProjects = [
     id: 'spring',
     class: 'spring',
     title: 'Spring',
-    description: 'Springtime Picnic Festival',
+    description: 'A festival app for ticket purchasing, from browsing options to completing payment.',
     tags: ['Design System', 'UI/UX', 'Mobile'],
     link: '/work/spring'
   },
@@ -28,17 +28,18 @@ export const allProjects = [
     id: 'turtlup',
     class: 'turtlup',
     title: 'TurtlUp',
-    description: 'Posture-sensing wearable with real-time feedback',
+    description: 'A wearable that monitors posture and provides haptic feedback, paired with a web app for tracking and calibration.',
     tags: ['Development', 'Hardware', 'Web'],
     link: '/work/turtlup'
   },
   {
-    id: 'hcde351',
-    class: 'hcde351',
-    title: 'HCDE 351',
-    description: 'A collection of prototyping projects exploring physical and digital interactions',
-    tags: ['Prototyping', 'Interaction Design'],
-    link: '/work/hcde351'
+    id: 'design-prototypes',
+    class: 'design-prototypes',
+    title: 'Design Prototypes',
+    description: 'A collection of design prototypes and experiments across digital and physical mediums, focused on exploring interaction, behavior, and system logic through rapid making and testing.',
+    tags: ['UX Writing', 'Prototyping'],
+    link: 'https://medium.com/@sophiaat',
+    external: true
   }
 ]
 

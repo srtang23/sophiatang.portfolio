@@ -52,7 +52,7 @@ h3 {
 h4 {
     font-family: 'Montserrat', sans-serif;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--black);
     margin: 0 0 16px 0;
     letter-spacing: 0.3px;
@@ -73,7 +73,6 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 1200px;
     width: 100%;
     margin: 0 auto;
     padding: 0;
@@ -94,12 +93,11 @@ h2 {
 }
 
 .header {
-    max-width: 1200px;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0 auto;
+    margin: 0;
     padding: 0 7.5%;
 }
 
@@ -109,7 +107,6 @@ h2 {
     justify-content: center;
     height: 80px;
     position: relative;
-    max-width: 1200px;
     width: 100%;
     overflow: visible;
 }
@@ -120,7 +117,6 @@ h2 {
     justify-content: center;
     gap: 32px;
     height: 56px;
-    max-width: 1400px;
     flex: 1;
     position: relative;
 }
@@ -394,11 +390,60 @@ h2 {
     align-items: flex-start;
     justify-content: flex-start;
     gap: 20px;
-    padding: 160px 7.5% 40px;
-    padding-top: calc(82px + 80px); /* Header height + top padding */
+    padding: 120px 7.5% 40px;
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+    margin: 0;
+}
+
+/* Hero Image + Description layout for project pages (Sprout, Spring) */
+.sprout-project .hero-section,
+.spring-project .hero-section {
+    padding: 0;
+    margin: 0;
+    gap: 0;
+}
+
+.sprout-project .hero-section .hero-image,
+.spring-project .hero-section .hero-image {
+    width: 100vw;
+    padding: 0;
+    padding-top: 80px;
+    height: calc(80vh);
+    overflow: visible;
+    position: relative;
+}
+
+.sprout-project .hero-section .hero-description,
+.spring-project .hero-section .hero-description {
+    gap: 10px;
+    padding: 20px 10vw 40px;
+    width: 100vw;
+    position: relative;
+    z-index: 10;
+}
+
+.sprout-project .hero-section .hero-description {
+    background-color: #46602C;
+    color: #FFFFEE;
+}
+
+.spring-project .hero-section .hero-description {
+    background-color: #E45969;
+    color: #FFFFEE;
+}
+
+/* Sprout + Spring hero label/text color on dark backgrounds */
+.sprout-project .hero-section .hero-description > h2:first-child,
+.sprout-project .hero-section .hero-description .hero-title,
+.sprout-project .hero-section .hero-description p,
+.sprout-project .hero-section .hero-description .hero-info h2,
+.sprout-project .hero-section .hero-description .hero-info p,
+.spring-project .hero-section .hero-description > h2:first-child,
+.spring-project .hero-section .hero-description .hero-title,
+.spring-project .hero-section .hero-description p,
+.spring-project .hero-section .hero-description .hero-info h2,
+.spring-project .hero-section .hero-description .hero-info p {
+    color: #FFFFEE;
 }
 
 /* Home page hero section - full viewport height */
@@ -441,9 +486,11 @@ h2 {
     }
 }
 
-/* TurtlUp page hero animations only */
+/* Project page hero animations (TurtlUp, Sprout, Spring) */
 .project-section ~ .hero-section > h2:first-child,
-body:has(.project-section) .hero-section > h2:first-child {
+body:has(.project-section) .hero-section > h2:first-child,
+.project-section ~ .hero-section .hero-description > h2:first-child,
+body:has(.project-section) .hero-section .hero-description > h2:first-child {
     animation: fadeInUp 0.8s ease-out forwards;
     animation-delay: 0.2s;
     opacity: 0;
@@ -461,6 +508,41 @@ body:has(.project-section) .hero-description {
     opacity: 0;
 }
 
+/* Project page hero text animations (Sprout, Spring) - text only, not divs */
+/* Ensure the div itself is always visible (no animation on background) */
+.sprout-project .hero-section .hero-description,
+.spring-project .hero-section .hero-description {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+}
+
+/* Only animate text elements inside the div */
+.sprout-project .hero-description > h2:first-child,
+.sprout-project .hero-description .hero-title,
+.sprout-project .hero-description .hero-info h2,
+.sprout-project .hero-description .hero-info p,
+.spring-project .hero-description > h2:first-child,
+.spring-project .hero-description .hero-title,
+.spring-project .hero-description .hero-info h2,
+.spring-project .hero-description .hero-info p {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.sprout-project .hero-description > h2:first-child.visible,
+.sprout-project .hero-description .hero-title.visible,
+.sprout-project .hero-description .hero-info h2.visible,
+.sprout-project .hero-description .hero-info p.visible,
+.spring-project .hero-description > h2:first-child.visible,
+.spring-project .hero-description .hero-title.visible,
+.spring-project .hero-description .hero-info h2.visible,
+.spring-project .hero-description .hero-info p.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .hero-title {
     font-family: 'Roboto Mono', monospace;
     font-size: 52px;
@@ -474,20 +556,17 @@ body:has(.project-section) .hero-description {
     width: 976px;
 }
 
-.hero-description {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    max-width: 976px;
-    width: 100%;
-}
-
 .hero-mockup-img {
     width: 100%;
     max-width: 100%;
-    height: auto;
-    margin-top: 20px;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    margin: 0;
     display: block;
+    image-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .hero-description p {
@@ -504,8 +583,9 @@ body:has(.project-section) .hero-description {
     counter-reset: section-counter;
 }
 
-/* First h2 in hero-section (TURTLUP tag) - same styling but no numbering */
-.hero-section > h2:first-child {
+/* First h2 in hero-section (page tag) - same styling but no numbering */
+.hero-section > h2:first-child,
+.hero-section .hero-description > h2:first-child {
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     font-weight: 700;
@@ -515,6 +595,7 @@ body:has(.project-section) .hero-description {
     text-transform: uppercase;
 }
 
+/* Section labels (e.g., CONTEXT, RESEARCH) */
 .hero-section h2:not(.hero-info h2):not(:first-child) {
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
@@ -547,7 +628,7 @@ body:has(.project-section) .hero-description {
 
 /* Sprout project green section numbers */
 .sprout-project .hero-section h2:not(.hero-info h2):not(:first-child)::before {
-    color: rgba(70, 96, 44, 1);
+    color: #46602C;
 }
 
 .hero-info h2 {
@@ -565,8 +646,10 @@ body:has(.project-section) .hero-description {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 24px;
-    margin-top: 16px;
+    margin-top: 40px;
     width: 100%;
+    justify-items: stretch;
+    align-items: start;
 }
 
 .hero-info > div {
@@ -574,6 +657,7 @@ body:has(.project-section) .hero-description {
     width: 100%;
     display: flex;
     flex-direction: column;
+    flex: 1 1 0;
 }
 
 .hero-info > div h2 {
@@ -583,10 +667,9 @@ body:has(.project-section) .hero-description {
 
 .hero-info > div p {
     font-family: 'Montserrat', sans-serif;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 500;
     letter-spacing: -0.4px;
-    margin-bottom: 32px;
     margin-top: 0;
     color: var(--black);
 }
@@ -639,9 +722,10 @@ body:has(.project-section) .hero-description {
     font-size: 18px;
     font-weight: 700;
     text-decoration: none;
-    box-shadow: 5px 5px #abaaaa;
+    /* Transparent black outline instead of solid drop shadow */
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.6);
     transition: all 0.2s ease;
-    margin-top: 10px;
+    margin-top: 20px;
     cursor: pointer;
     white-space: nowrap;
 }
@@ -657,8 +741,9 @@ body:has(.project-section) .hero-description {
 .outside-link-button:hover,
 .outside-link-button.visible:hover {
     background-color: #333;
-    transform: translate(2px, 2px);
-    box-shadow: 3px 3px #abaaaa;
+    transform: translate(1px, 1px);
+    /* Slightly lighter outline on hover for feedback */
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.4);
 }
 
 .outside-link-button:hover::after {
@@ -791,7 +876,6 @@ body:has(.project-section) .hero-description {
     grid-template-columns: repeat(2, 1fr);
     gap: 36px;
     width: 100%;
-    max-width: 1200px;
     margin: 0 auto;
     padding: 125px 7.5% 160px;
 }
@@ -837,7 +921,7 @@ body:has(.project-section) .hero-description {
 }
 
 .project-card.sprout {
-    background: url('/img/sprout/sprout_mockup.png') center/cover no-repeat;
+    background: url('/img/sprout/sprout_hero.png') center/cover no-repeat;
 }
 
 .project-card.turtlup {
@@ -846,23 +930,8 @@ body:has(.project-section) .hero-description {
         linear-gradient(135deg, #f5f7fa 0%, #e8f4f8 100%);
 }
 
-.project-card.hcde351 {
-    background: linear-gradient(135deg, #e8e2f5 0%, #d4c5f0 50%, #c0a8eb 100%);
-    position: relative;
-    overflow: hidden;
-}
-
-.project-card.hcde351::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background:
-        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
-    opacity: 0.6;
+.project-card.design-prototypes {
+    background: url('/img/design_prototypes.GIF') center/cover no-repeat;
 }
 
 .project-card.portfolio {
@@ -935,7 +1004,6 @@ body:has(.project-section) .hero-description {
     justify-content: flex-start;
     gap: 40px;
     padding: 120px 7.5% 80px;
-    max-width: 1200px;
     width: 100%;
     margin: 0 auto;
 }
@@ -944,7 +1012,6 @@ body:has(.project-section) .hero-description {
     display: flex;
     flex-direction: column;
     gap: 40px;
-    max-width: 976px;
     width: 100%;
 }
 
@@ -1121,11 +1188,11 @@ body:has(.project-section) .hero-description {
 /* Sprout project specific flip card styles */
 .sprout-project .flip-card-front {
     background: linear-gradient(135deg, rgba(255, 255, 238, 1) 0%, rgba(218, 223, 159, 0.5) 100%);
-    border-left: 4px solid rgba(70, 96, 44, 1);
+    border-left: 4px solid #46602C;
 }
 
 .sprout-project .flip-card-front h3 {
-    color: rgba(70, 96, 44, 1) !important;
+    color: #46602C !important;
 }
 
 .flip-card-back {
@@ -1141,7 +1208,7 @@ body:has(.project-section) .hero-description {
 }
 
 .sprout-project .flip-card-back h3 {
-    color: rgba(70, 96, 44, 1) !important;
+    color: #46602C !important;
 }
 
 .hmw-icon,
@@ -1185,11 +1252,9 @@ body:has(.project-section) .hero-description {
 .project-section {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
+    align-items: center;
     gap: 40px;
     padding: 40px 7.5% 0;
-    max-width: 1200px;
     width: 100%;
     margin: 0 auto 64px;
 }
@@ -1240,14 +1305,15 @@ body:has(.project-section) .hero-description {
 
 /* Sprout project green section numbers */
 .sprout-project .project-section h2::before {
-    color: rgba(70, 96, 44, 1);
+    color: #46602C;
 }
 
 .project-content {
     display: flex;
     flex-direction: column;
     gap: 40px;
-    max-width: 976px;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .project-text-content {
@@ -1320,6 +1386,100 @@ body:has(.project-section) .hero-description {
 
 .project-text img:last-child {
     margin-bottom: 0;
+}
+
+/* ===== Sprout page responsive overrides ===== */
+.sprout-project .main-container {
+    width: 100%;
+}
+
+
+.sprout-project .project-content {
+    width: 100%;
+}
+
+.sprout-project .hero-title {
+    width: 100%;
+    max-width: 60rem;
+}
+
+.sprout-project .hero-info,
+.sprout-project .hero-description {
+    width: 100%;
+}
+
+/* Sprout final prototype horizontal strip */
+.sprout-final-strip {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: stretch;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 16px 8px;
+}
+
+.sprout-final-card {
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 24px 24px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+    flex: 0 0 calc(50% - 12px); /* exactly two cards per view with 24px gap */
+    max-width: none;
+}
+
+.sprout-final-card .prototype-description {
+    min-height: 140px; /* desktop/tablet: aligns GIF start across cards without huge gaps */
+}
+
+.sprout-final-gif {
+    width: 100%;
+    max-height: 520px;
+    height: auto;
+    display: block;
+}
+
+/* Carousel wrapper + arrows */
+.sprout-final-carousel {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 16px;
+}
+
+@media (max-width: 900px) {
+  .sprout-final-carousel {
+      grid-template-columns: 1fr;
+      row-gap: 16px;
+  }
+
+  .sprout-final-carousel .prototype-nav-btn {
+      justify-self: center;
+  }
+
+  .sprout-final-strip {
+      gap: 16px;
+      padding: 12px 8px;
+  }
+
+  .sprout-final-card {
+      flex: 0 0 100%; /* single card per view on narrow screens */
+      max-width: 100%;
+  }
+
+  .sprout-final-card .prototype-description {
+      min-height: auto; /* let text define height on mobile to remove big gaps */
+  }
+
+  .sprout-final-gif {
+      max-height: 360px; /* keep GIFs from overflowing on medium/smaller viewports */
+  }
 }
 
 .product-overview-img {
@@ -2033,15 +2193,15 @@ body:has(.project-section) .hero-description {
 
 .insight-card {
     background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
-    border-left: 4px solid #006ED3;
-    border-radius: 12px;
-    padding: 24px;
+    border: none;
+    border-radius: 0;
+    padding: 32px 28px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
     transition: all 0.3s ease;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-    min-height: 200px;
+    min-height: auto;
 }
 
 .competitive-row .insight-card {
@@ -2063,7 +2223,7 @@ body:has(.project-section) .hero-description {
 
 /* Sprout project green styling */
 .sprout-project .insight-card {
-    border-left-color: rgba(70, 96, 44, 1);
+    /* Border removed - box cards with no border */
 }
 
 .sprout-project .insight-card:hover {
@@ -2089,6 +2249,152 @@ body:has(.project-section) .hero-description {
     padding-left: 16px;
     border-left: 3px solid #e2e8f0;
     margin: 0 !important;
+}
+
+/* Benefit Section for Competitive Analysis */
+.benefit-section {
+    margin: 32px 0;
+}
+
+.benefit-section > h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: var(--black);
+}
+
+.benefits-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 32px;
+    margin: 24px 0;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    gap: 16px;
+}
+
+.item-icon {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin: 0 auto;
+}
+
+.item h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+    color: var(--black);
+}
+
+.item p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #4a5568;
+    margin: 0;
+}
+
+.problem-section {
+    margin: 32px 0;
+}
+
+.problem-section > h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: var(--black);
+}
+
+/* Testing Feedback Styling */
+.testing-feedback {
+    margin: 32px 0;
+    padding: 24px;
+    background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+    border-left: 4px solid #46602C;
+    border-radius: 0;
+}
+
+.testing-feedback h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 16px 0;
+    color: var(--black);
+}
+
+.testing-feedback p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #4a5568;
+    margin: 0 0 12px 0;
+}
+
+.testing-feedback p:last-child {
+    margin-bottom: 0;
+}
+
+.testing-feedback ul {
+    margin: 16px 0;
+    padding-left: 24px;
+}
+
+.testing-feedback li {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #4a5568;
+    margin-bottom: 12px;
+}
+
+.testing-feedback li:last-child {
+    margin-bottom: 0;
+}
+
+.testing-feedback strong {
+    font-weight: 600;
+    color: var(--black);
+}
+
+.sprout-project .testing-feedback {
+    border-left-color: #46602C;
+}
+
+@media (max-width: 768px) {
+    .benefits-row {
+        flex-direction: column;
+        gap: 24px;
+    }
+}
+
+/* HMW Question Styling */
+.hmw-question {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px !important;
+    font-weight: 700;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--black);
+    margin: 24px 0;
+}
+
+strong {
+    font-weight: 600;
 }
 
 .insight-takeaway {
@@ -2341,8 +2647,7 @@ body:has(.project-section) .hero-description {
     display: none;
 }
 
-.prototype-slider-wrapper .prototype-nav-btn {
-    position: absolute;
+.prototype-nav-btn {
     background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%);
     border: none;
     border-radius: 50%;
@@ -2354,8 +2659,22 @@ body:has(.project-section) .hero-description {
     cursor: pointer;
     transition: all 0.3s ease;
     color: #006ED3;
-    z-index: 9999;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Sprout-specific arrow color */
+.sprout-project .sprout-final-carousel .prototype-nav-btn {
+    color: #46602C;
+}
+
+/* Spring-specific arrow color */
+.spring-project .sprout-final-carousel .prototype-nav-btn {
+    color: #E45969;
+}
+
+.prototype-slider-wrapper .prototype-nav-btn {
+    position: absolute;
+    z-index: 9999;
     pointer-events: auto;
 }
 
@@ -2378,14 +2697,19 @@ body:has(.project-section) .hero-description {
 }
 
 .prototype-nav-btn:disabled {
-    opacity: 0.5;
+    opacity: 0.3;
     cursor: not-allowed;
+    background: linear-gradient(135deg, #e0e0e0 0%, #d0d0d0 100%);
+    color: #888888;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    pointer-events: none;
 }
 
 .prototype-nav-btn:disabled:hover {
-    background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%);
-    color: #006ED3;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    background: linear-gradient(135deg, #e0e0e0 0%, #d0d0d0 100%);
+    color: #888888;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    transform: none;
 }
 
 .prototype-slide {
@@ -2405,13 +2729,13 @@ body:has(.project-section) .hero-description {
 }
 
 
-.prototype-content {
+.prototype-description {
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
 
-.prototype-content h3 {
+.prototype-description h3 {
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     font-weight: 700;
@@ -2422,7 +2746,7 @@ body:has(.project-section) .hero-description {
     margin: 0;
 }
 
-.prototype-content p {
+.prototype-description p {
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     font-weight: 400;
@@ -2680,7 +3004,6 @@ body:has(.project-section) .hero-description {
 .more-projects-section {
     padding: 80px 7.5% 60px;
     width: 100%;
-    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -2694,7 +3017,6 @@ body:has(.project-section) .hero-description {
 }
 
 .more-projects-container {
-    max-width: 1000px;
     margin: 0 auto;
     width: 100%;
     padding: 0;
@@ -2757,7 +3079,7 @@ body:has(.project-section) .hero-description {
 }
 
 .more-project-card.sprout {
-    background: url('/img/sprout/sprout_mockup.png') center/cover no-repeat;
+    background: url('/img/sprout/sprout_hero.png') center/cover no-repeat;
 }
 
 .more-project-card.turtlup {
@@ -2778,23 +3100,8 @@ body:has(.project-section) .hero-description {
     overflow: hidden;
 }
 
-.more-project-card.hcde351 {
-    background: linear-gradient(135deg, #e8e2f5 0%, #d4c5f0 50%, #c0a8eb 100%);
-    position: relative;
-    overflow: hidden;
-}
-
-.more-project-card.hcde351::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background:
-        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
-    opacity: 0.6;
+.more-project-card.design-prototypes {
+    background: url('/img/design_prototypes.GIF') center/cover no-repeat;
 }
 
 .more-project-info {
@@ -2867,7 +3174,6 @@ body:has(.project-section) .hero-description {
     justify-content: center;
     gap: 64px;
     padding: 160px 7.5%;
-    max-width: 1200px;
     width: 100%;
     margin: 0 auto;
 }
@@ -3144,10 +3450,7 @@ body:has(.project-section) .hero-description {
     }
 
     .nav-links {
-        display: flex !important;
-        opacity: 0;
-        transform: translateX(20px);
-        pointer-events: none;
+        display: none !important;
     }
 
     .nav-links-fadeout {
@@ -3267,11 +3570,11 @@ body:has(.project-section) .hero-description {
         right: 6px;
     }
 
-    .prototype-content h3 {
+    .prototype-description h3 {
         font-size: 12px;
     }
 
-    .prototype-content p {
+    .prototype-description p {
         font-size: 14px;
     }
 
@@ -3299,8 +3602,7 @@ body:has(.project-section) .hero-description {
 
 @media (max-width: 480px) {
     .hero-section {
-        padding: 80px 7.5% 32px;
-        padding-top: calc(82px + 32px);
+        padding: 0;
     }
 
     .hero-title {

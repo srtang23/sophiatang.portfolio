@@ -4,6 +4,7 @@ import Slideshow from '../../components/Slideshow'
 import ArtifactModal from '../../components/ArtifactModal'
 import MoreProjects from '../../components/MoreProjects'
 import OutsideLinkButton from '../../components/OutsideLinkButton'
+import MobilePrototypeCarousel from '../../components/MobilePrototypeCarousel'
 import { useSpringButton } from '../../hooks/useSpringButton'
 import { useSpringInput } from '../../hooks/useSpringInput'
 import { useScrollReveal } from '../../hooks/useScrollReveal'
@@ -26,6 +27,30 @@ function Spring() {
 
   useEffect(() => {
     document.body.className = 'spring-project'
+
+    // Animate hero text elements on mount
+    const animateHeroText = () => {
+      const h2 = document.querySelector('.hero-description > h2:first-child')
+      const h1 = document.querySelector('.hero-description .hero-title')
+      const heroInfoH2s = document.querySelectorAll('.hero-description .hero-info h2')
+      const heroInfoPs = document.querySelectorAll('.hero-description .hero-info p')
+
+      if (h2) {
+        setTimeout(() => h2.classList.add('visible'), 200)
+      }
+      if (h1) {
+        setTimeout(() => h1.classList.add('visible'), 400)
+      }
+      heroInfoH2s.forEach((el, index) => {
+        setTimeout(() => el.classList.add('visible'), 600 + index * 100)
+      })
+      heroInfoPs.forEach((el, index) => {
+        setTimeout(() => el.classList.add('visible'), 700 + index * 100)
+      })
+    }
+
+    // Wait for DOM to be ready
+    setTimeout(animateHeroText, 100)
 
     // Initialize wireframes drag scroll
     const slider = wireframesSliderRef.current
@@ -70,6 +95,7 @@ function Spring() {
       slider.removeEventListener('mouseleave', handleMouseLeave)
       slider.removeEventListener('mouseup', handleMouseUp)
       slider.removeEventListener('mousemove', handleMouseMove)
+      document.body.className = ''
     }
   }, [])
 
@@ -127,37 +153,62 @@ function Spring() {
     setModalOpen(true)
   }
 
+  const finalFeatures = [
+    {
+      id: 'discover-ticket',
+      title: 'Discover Ticket',
+      description: 'Users navigate to the ticket purchase section and choose between a three-day pass or a one-day ticket option.',
+      src: '/img/spring/discover_ticket.gif',
+      alt: 'Spring prototype showing ticket discovery'
+    },
+    {
+      id: 'select-ticket',
+      title: 'Select Ticket',
+      description: 'Users select their preferred ticket type and quantity before proceeding to checkout.',
+      src: '/img/spring/select_ticket.gif',
+      alt: 'Spring prototype showing ticket selection'
+    },
+    {
+      id: 'completing-payment',
+      title: 'Completing Payment',
+      description: 'Users complete their purchase through a secure payment flow with confirmation.',
+      src: '/img/spring/completing_payment.gif',
+      alt: 'Spring prototype showing payment completion'
+    }
+  ]
 
   return (
     <>
       <TableOfContents />
       <section className="hero-section">
-        <h2>SPRING</h2>
-        <h1 className="hero-title">Springtime Picnic Festival</h1>
+        <div className="hero-image">
+          <img src="/img/spring/spring_mockup.png" alt="Spring Festival Mobile App Mockup" className="hero-mockup-img" />
+        </div>
         <div className="hero-description">
+          <h2>SPRING</h2>
+          <h1 className="hero-title">Springtime Picnic Festival</h1>
           <div className="hero-info">
             <div>
               <h2>Role</h2>
               <p>UI/UX Designer</p>
-              <OutsideLinkButton href="https://drive.google.com/file/d/1ARHUGwo_LTeJtLdI5qIjPhczndscK_gR/view?usp=sharing">
-                View Case Study
-              </OutsideLinkButton>
             </div>
             <div>
               <h2>Expertise</h2>
-              <p>Visual Design | Design Systems</p>
-            </div>
-            <div>
-              <h2>Team</h2>
-              <p>Solo Project</p>
+              <p>Visual Design <br /> Design Systems</p>
             </div>
             <div>
               <h2>Year</h2>
               <p>2024</p>
             </div>
+            <div>
+              <h2>Team</h2>
+              <p>Solo Project</p>
+            </div>
           </div>
+          <OutsideLinkButton href="https://drive.google.com/file/d/1ARHUGwo_LTeJtLdI5qIjPhczndscK_gR/view?usp=sharing">
+            View Case Study
+          </OutsideLinkButton>
         </div>
-        <img src="/img/spring/spring_mockup.png" alt="Spring Festival Mobile App Mockup" className="hero-mockup-img" />
       </section>
 
       <section className="project-section">
@@ -382,19 +433,10 @@ function Spring() {
 
             <div className="project-details project-gap">
               <div className="project-text">
-                <h2>FINAL PROTOTYPE</h2>
+                <h2>FINAL DESIGN</h2>
                 <div className="subsection-content">
-                  <p>Interactive prototype demonstrating the end-to-end ticket purchasing experience.</p>
-                  <div className="demo">
-                    <iframe
-                      style={{ border: '1px solid rgba(0, 0, 0, 0.1)' }}
-                      width="800"
-                      height="450"
-                      src="https://embed.figma.com/proto/XJy2UnMvDEbxYEkkvDMBMz/HCDE-308-Sophia-Tang?page-id=0%3A1&node-id=333-14031&viewport=775%2C-8633%2C0.53&scaling=scale-down&content-scaling=fixed&starting-point-node-id=333%3A14031&embed-host=share"
-                      allowFullScreen
-                      title="Spring Prototype"
-                    ></iframe>
-                  </div>
+                  <p>Interactive prototype demonstrating the complete ticket purchase flow from discovery to payment confirmation.</p>
+                  <MobilePrototypeCarousel items={finalFeatures} />
                 </div>
               </div>
             </div>
@@ -402,7 +444,6 @@ function Spring() {
             <div className="project-details project-gap">
               <div className="project-text">
                 <h2>TAKEAWAYS</h2>
-                <p>Building Spring taught me how to think systematically about design while maintaining emotional resonance.</p>
                 <div className="takeaways-cards">
                   <div className="takeaway-card">
                     <span className="takeaway-icon">🎨</span>

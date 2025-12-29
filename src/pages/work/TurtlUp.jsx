@@ -2,12 +2,11 @@ import { useEffect, useRef } from 'react'
 import TableOfContents from '../../components/TableOfContents'
 import FlipCard from '../../components/FlipCard'
 import MoreProjects from '../../components/MoreProjects'
-import { usePrototypeSlider } from '../../hooks/usePrototypeSlider'
+import DesktopPrototypeSlider from '../../components/DesktopPrototypeSlider'
 import { useScrollReveal } from '../../hooks/useScrollReveal'
 
 function TurtlUp() {
   const wireframesSliderRef = useRef(null)
-  const { sliderRef, prevBtnRef, nextBtnRef } = usePrototypeSlider()
   useScrollReveal()
 
   useEffect(() => {
@@ -72,28 +71,16 @@ function TurtlUp() {
             </div>
             <div>
               <h2>Expertise</h2>
-              <p>UX/UI Design | Frontend Development</p>
-            </div>
-            <div>
-              <h2>Team</h2>
-              <p>Justus Brown, Sarah Harrell, Sumin Hong</p>
+              <p>UI/UX Design <br /> UX Research <br /> Hardware Design <br /> Frontend Development</p>
             </div>
             <div>
               <h2>Year</h2>
               <p>2024</p>
             </div>
-          </div>
-          <h2 id="demo-section">DEMO</h2>
-          <div className="demo" aria-label="TurtlUp Demo Video">
-            <iframe
-              title="TurtlUp Demo Video"
-              aria-label="TurtlUp Demo Video"
-              src="https://www.youtube.com/embed/IXgoF7fWUYQ?enablejsapi=1&rel=0&modestbranding=1&playsinline=1&autoplay=0&mute=0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-              loading="lazy"
-              frameBorder="0"
-            ></iframe>
+            <div>
+              <h2>Team</h2>
+              <p>Justus Brown<br />Sarah Harrell<br />Sumin Hong</p>
+            </div>
           </div>
         </div>
       </section>
@@ -102,6 +89,23 @@ function TurtlUp() {
         <div className="project-content">
           <div className="project-text-content full-width">
             <div className="project-details">
+              <div className="project-text">
+                <h2 id="demo-section">DEMO</h2>
+                <div className="demo" aria-label="TurtlUp Demo Video">
+                  <iframe
+                    title="TurtlUp Demo Video"
+                    aria-label="TurtlUp Demo Video"
+                    src="https://www.youtube.com/embed/IXgoF7fWUYQ?enablejsapi=1&rel=0&modestbranding=1&playsinline=1&autoplay=0&mute=0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    loading="lazy"
+                    frameBorder="0"
+                  ></iframe>
+                </div>
+              </div>
+            </div>
+
+            <div className="project-details project-gap">
               <div className="project-text">
                 <h2>CONTEXT</h2>
                 <p>Back pain affects 39% of U.S. adults due to poor posture and lack of awareness. The posture correction market represents a $1.24B opportunity in 2024.</p>
@@ -273,74 +277,38 @@ function TurtlUp() {
 
             <div className="project-details project-gap">
               <div className="project-text">
-                <h2>FINAL PROTOTYPE</h2>
+                <h2>FINAL DESIGN</h2>
                 <p>The final prototype demonstrates the complete TurtlUp system in action. For a full walkthrough of all features including the physical device, please refer to the <a href="#demo-section" className="nav-link">demo video</a> above.</p>
-                <div className="prototype-slider-wrapper">
-                  <button
-                    className="prototype-nav-btn prototype-nav-prev"
-                    aria-label="Previous slide"
-                    id="prototypePrevBtn"
-                    ref={prevBtnRef}
-                  >
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </button>
-                  <div className="prototype-slider" id="prototypeSlider" ref={sliderRef}>
-                    <div className="prototype-slide prototype-slide-first">
-                      <div className="prototype-content">
-                        <h3>PERSONALIZATION</h3>
-                        <p>Calibrate your device to personalize posture detection based on your unique sitting position.</p>
-                      </div>
-                      <div className="macbook-frame">
-                        <div className="macbook-screen">
-                          <div className="prototype-gif-container">
-                            <img src="/img/turtlup/calibration.GIF" alt="Personalization Prototype" />
-                          </div>
-                        </div>
-                        <div className="macbook-base"></div>
-                      </div>
-                    </div>
-                    <div className="prototype-slide prototype-slide-middle">
-                      <div className="prototype-content">
-                        <h3>REAL-TIME TRACKING</h3>
-                        <p>View detailed posture statistics and track your progress over time with visual data representations.</p>
-                      </div>
-                      <div className="macbook-frame">
-                        <div className="macbook-screen">
-                          <div className="prototype-gif-container">
-                            <img src="/img/turtlup/posture_stats.GIF" alt="Real-Time Tracking Prototype" />
-                          </div>
-                        </div>
-                        <div className="macbook-base"></div>
-                      </div>
-                    </div>
-                    <div className="prototype-slide">
-                      <div className="prototype-content">
-                        <h3>CUSTOMIZATION</h3>
-                        <p>Customize feedback sensitivity, intensity, and notification preferences to match your needs.</p>
-                      </div>
-                      <div className="macbook-frame">
-                        <div className="macbook-screen">
-                          <div className="prototype-gif-container">
-                            <img src="/img/turtlup/settings.GIF" alt="Customization Prototype" />
-                          </div>
-                        </div>
-                        <div className="macbook-base"></div>
-                      </div>
-                    </div>
-                  </div>
-                  <button
-                    className="prototype-nav-btn prototype-nav-next"
-                    aria-label="Next slide"
-                    id="prototypeNextBtn"
-                    ref={nextBtnRef}
-                  >
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </button>
-                </div>
+                <DesktopPrototypeSlider
+                  slides={[
+                    {
+                      id: 'personalization',
+                      title: 'PERSONALIZATION',
+                      description:
+                        'Calibrate your device to personalize posture detection based on your unique sitting position.',
+                      src: '/img/turtlup/calibration.GIF',
+                      alt: 'Personalization Prototype',
+                      extraClass: 'prototype-slide-first'
+                    },
+                    {
+                      id: 'tracking',
+                      title: 'REAL-TIME TRACKING',
+                      description:
+                        'View detailed posture statistics and track your progress over time with visual data representations.',
+                      src: '/img/turtlup/posture_stats.GIF',
+                      alt: 'Real-Time Tracking Prototype',
+                      extraClass: 'prototype-slide-middle'
+                    },
+                    {
+                      id: 'customization',
+                      title: 'CUSTOMIZATION',
+                      description:
+                        'Customize feedback sensitivity, intensity, and notification preferences to match your needs.',
+                      src: '/img/turtlup/settings.GIF',
+                      alt: 'Customization Prototype'
+                    }
+                  ]}
+                />
               </div>
             </div>
 
