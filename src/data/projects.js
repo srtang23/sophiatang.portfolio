@@ -12,7 +12,7 @@ export const allProjects = [
     id: 'sprout',
     class: 'sprout',
     title: 'Sprout',
-    description: 'A tangible self-care system designed to help students manage anxiety through a mobile app integrated with an optional physical plant companion, making wellness feel supportive rather than overwhelming.',
+    description: 'A tangible self-care system designed to help students manage anxiety through a mobile app integrated with an optional physical plant companion.',
     tags: ['Design System', 'UI/UX', 'Mobile'],
     link: '/work/sprout'
   },

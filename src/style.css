@@ -98,7 +98,7 @@ h2 {
     flex-direction: column;
     align-items: center;
     margin: 0;
-    padding: 0 7.5%;
+    padding: 0 8.5%;
 }
 
 .nav {
@@ -256,7 +256,7 @@ h2 {
     left: 0;
     right: 0;
     background-color: var(--white);
-    padding: 0 7.5%;
+    padding: 0 8.5%;
     gap: 0;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     opacity: 0;
@@ -277,7 +277,7 @@ h2 {
     transform: translateY(0);
     pointer-events: auto;
     max-height: 500px;
-    padding: 24px 7.5%;
+    padding: 24px 8.5%;
     gap: 24px;
 }
 
@@ -390,7 +390,7 @@ h2 {
     align-items: flex-start;
     justify-content: flex-start;
     gap: 20px;
-    padding: 120px 7.5% 40px;
+    padding: 120px 8.5% 40px;
     width: 100%;
     margin: 0;
 }
@@ -506,41 +506,6 @@ body:has(.project-section) .hero-description {
     animation: fadeInUp 0.8s ease-out forwards;
     animation-delay: 0.6s;
     opacity: 0;
-}
-
-/* Project page hero text animations (Sprout, Spring) - text only, not divs */
-/* Ensure the div itself is always visible (no animation on background) */
-.sprout-project .hero-section .hero-description,
-.spring-project .hero-section .hero-description {
-    opacity: 1 !important;
-    transform: none !important;
-    animation: none !important;
-}
-
-/* Only animate text elements inside the div */
-.sprout-project .hero-description > h2:first-child,
-.sprout-project .hero-description .hero-title,
-.sprout-project .hero-description .hero-info h2,
-.sprout-project .hero-description .hero-info p,
-.spring-project .hero-description > h2:first-child,
-.spring-project .hero-description .hero-title,
-.spring-project .hero-description .hero-info h2,
-.spring-project .hero-description .hero-info p {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.sprout-project .hero-description > h2:first-child.visible,
-.sprout-project .hero-description .hero-title.visible,
-.sprout-project .hero-description .hero-info h2.visible,
-.sprout-project .hero-description .hero-info p.visible,
-.spring-project .hero-description > h2:first-child.visible,
-.spring-project .hero-description .hero-title.visible,
-.spring-project .hero-description .hero-info h2.visible,
-.spring-project .hero-description .hero-info p.visible {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 .hero-title {
@@ -877,7 +842,7 @@ body:has(.project-section) .hero-description {
     gap: 36px;
     width: 100%;
     margin: 0 auto;
-    padding: 125px 7.5% 160px;
+    padding: 125px 8.5% 160px;
 }
 
 .project-card-wrapper {
@@ -904,7 +869,7 @@ body:has(.project-section) .hero-description {
 }
 
 .project-card {
-    height: 320px;
+    height: 380px;
     border-radius: 12px;
     overflow: hidden;
     transition: box-shadow 0.3s ease, transform 0.3s ease;
@@ -1003,7 +968,7 @@ body:has(.project-section) .hero-description {
     align-items: flex-start;
     justify-content: flex-start;
     gap: 40px;
-    padding: 120px 7.5% 80px;
+    padding: 120px 8.5% 80px;
     width: 100%;
     margin: 0 auto;
 }
@@ -1254,7 +1219,7 @@ body:has(.project-section) .hero-description {
     flex-direction: column;
     align-items: center;
     gap: 40px;
-    padding: 40px 7.5% 0;
+    padding: 40px 8.5% 0;
     width: 100%;
     margin: 0 auto 64px;
 }
@@ -3002,7 +2967,7 @@ strong {
 
 /* Next Up Section */
 .more-projects-section {
-    padding: 80px 7.5% 60px;
+    padding: 80px 8.5% 60px;
     width: 100%;
     margin: 0 auto;
 }
@@ -3067,7 +3032,7 @@ strong {
 }
 
 .more-project-card {
-    height: 320px;
+    height: 400px;
     border-radius: 12px;
     overflow: hidden;
     transition: box-shadow 0.3s ease;
@@ -3173,7 +3138,7 @@ strong {
     align-items: center;
     justify-content: center;
     gap: 64px;
-    padding: 160px 7.5%;
+    padding: 160px 8.5%;
     width: 100%;
     margin: 0 auto;
 }
@@ -3293,7 +3258,7 @@ strong {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 16px 7.5%;
+    padding: 16px 8.5%;
     background-color: var(--white);
     border-top: 1px solid transparent;
     z-index: 9999;
@@ -3418,25 +3383,25 @@ strong {
 /* Responsive Design */
 @media (max-width: 1024px) {
     .hero-section {
-        padding: 120px 7.5% 40px;
+        padding: 120px 8.5% 40px;
         padding-top: calc(82px + 60px);
     }
 
     .projects-section {
-        padding: 100px 7.5% 120px;
+        padding: 100px 8.5% 120px;
         gap: 32px;
     }
 
     .footer {
-        padding: 14px 7.5%;
+        padding: 14px 8.5%;
     }
 
     .more-projects-section {
-        padding: 60px 7.5% 40px;
+        padding: 60px 8.5% 40px;
     }
 
     .project-section {
-        padding: 40px 7.5% 0;
+        padding: 40px 8.5% 0;
     }
 }
 
@@ -3446,7 +3411,7 @@ strong {
     }
 
     .header {
-        padding: 0 7.5%;
+        padding: 0 8.5%;
     }
 
     .nav-links {
@@ -3484,7 +3449,7 @@ strong {
     }
 
     .hero-section {
-        padding: 100px 7.5% 40px;
+        padding: 100px 8.5% 40px;
         padding-top: calc(82px + 40px);
     }
 
@@ -3494,12 +3459,12 @@ strong {
 
     .projects-section {
         grid-template-columns: 1fr;
-        padding: 80px 7.5% 100px;
+        padding: 80px 8.5% 100px;
         gap: 48px;
     }
 
     .footer {
-        padding: 12px 7.5%;
+        padding: 12px 8.5%;
         gap: 8px;
         flex-wrap: wrap;
     }
@@ -3545,11 +3510,11 @@ strong {
     }
 
     .more-projects-section {
-        padding: 60px 7.5% 40px;
+        padding: 60px 8.5% 40px;
     }
 
     .project-section {
-        padding: 40px 7.5% 0;
+        padding: 40px 8.5% 0;
     }
 
     .outside-link-button {
@@ -3614,12 +3579,12 @@ strong {
     }
 
     .projects-section {
-        padding: 60px 7.5% 80px;
+        padding: 60px 8.5% 80px;
         gap: 40px;
     }
 
     .footer {
-        padding: 10px 7.5%;
+        padding: 10px 8.5%;
         gap: 6px;
     }
 
@@ -3668,7 +3633,7 @@ strong {
     }
 
     .more-projects-section {
-        padding: 40px 7.5% 32px;
+        padding: 40px 8.5% 32px;
     }
 
     .nav-links {

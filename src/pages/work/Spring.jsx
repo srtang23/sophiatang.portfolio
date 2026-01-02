@@ -28,30 +28,6 @@ function Spring() {
   useEffect(() => {
     document.body.className = 'spring-project'
 
-    // Animate hero text elements on mount
-    const animateHeroText = () => {
-      const h2 = document.querySelector('.hero-description > h2:first-child')
-      const h1 = document.querySelector('.hero-description .hero-title')
-      const heroInfoH2s = document.querySelectorAll('.hero-description .hero-info h2')
-      const heroInfoPs = document.querySelectorAll('.hero-description .hero-info p')
-
-      if (h2) {
-        setTimeout(() => h2.classList.add('visible'), 200)
-      }
-      if (h1) {
-        setTimeout(() => h1.classList.add('visible'), 400)
-      }
-      heroInfoH2s.forEach((el, index) => {
-        setTimeout(() => el.classList.add('visible'), 600 + index * 100)
-      })
-      heroInfoPs.forEach((el, index) => {
-        setTimeout(() => el.classList.add('visible'), 700 + index * 100)
-      })
-    }
-
-    // Wait for DOM to be ready
-    setTimeout(animateHeroText, 100)
-
     // Initialize wireframes drag scroll
     const slider = wireframesSliderRef.current
     if (!slider) return
