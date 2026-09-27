@@ -154,8 +154,6 @@ function Home() {
       <section className="hero-section">
         <h1 className="hero-title">Hi, I'm Sophia!</h1>
         <div className="hero-description">
-          <p>A current undergrad student @ HCDE.</p>
-          <br />
           <p>I'm a UX & Product Designer with engineering mindset, bridging design and development.</p>
         </div>
         <OutsideLinkButton href="https://www.linkedin.com/in/sophia-tang-5a087b256/">

@@ -111,7 +111,7 @@ function Header() {
               <div className="nav-links">
                 <Link to="/#work" className="nav-link" onClick={handleWorkClick}>Work</Link>
                 <Link to="/about" className="nav-link" onClick={handleAboutClick}>About</Link>
-                <a href="https://drive.google.com/file/d/1KOTi0_8JAcTXGLdXeSWmpH5-4IxACoI0/view?usp=sharing" className="nav-link external-link" target="_blank" rel="noopener noreferrer" onClick={() => setIsMenuOpen(false)}>Resume</a>
+                <a href="https://drive.google.com/file/d/1Mk_Z4-TMrCxXZYJlwGhiEVzxTm4-wct0/view" className="nav-link external-link" target="_blank" rel="noopener noreferrer" onClick={() => setIsMenuOpen(false)}>Resume</a>
               </div>
               <button className="hamburger-menu" onClick={toggleMenu} aria-label="Toggle menu">
                 <span className={`hamburger-line ${isMenuOpen ? 'open' : ''}`}></span>
@@ -123,7 +123,7 @@ function Header() {
           <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`}>
             <Link to="/#work" className="mobile-nav-link" onClick={handleWorkClick}>Work</Link>
             <Link to="/about" className="mobile-nav-link" onClick={handleAboutClick}>About</Link>
-            <a href="https://drive.google.com/file/d/1KOTi0_8JAcTXGLdXeSWmpH5-4IxACoI0/view?usp=sharing" className="mobile-nav-link" target="_blank" rel="noopener noreferrer" onClick={() => setIsMenuOpen(false)}>Resume</a>
+            <a href="https://drive.google.com/file/d/1Mk_Z4-TMrCxXZYJlwGhiEVzxTm4-wct0/view" className="mobile-nav-link" target="_blank" rel="noopener noreferrer" onClick={() => setIsMenuOpen(false)}>Resume</a>
           </div>
         </nav>
       </div>
